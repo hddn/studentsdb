@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8"/>
-    <title>Сервіс Обліку Студентів</title>
+    <title>Групи</title>
     <meta name="description" value="Система Обліку Студентів Навчального Закладу"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -31,28 +31,20 @@
       <div class="row" id="sub-header">
         <div class="col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#">Студенти</a></li>
+            <li role="presentation"><a href="#">Студенти</a></li>
             <li role="presentation"><a href="#">Відвідування</a></li>
-            <li role="presentation"><a href="#">Групи</a></li>
+            <li role="presentation" class="active"><a href="#">Групи</a></li>
           </ul>    
         </div>                
       </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="alert alert-warning" role="alert">
-            Зміни скасовано
-          </div>
-        </div>
-      </div>
-
+      
       <div class="row" id="table-header">
         <div class="col-xs-10">
-          <h2>База Студентів</h2>
+          <h2>Групи</h2>
         </div>
 
-        <div class="col-xs-2" id="add-student">
-          <a class="btn btn-primary" href="#">Додати Студента</a>
+        <div class="col-xs-2" id="add-group">
+          <a class="btn btn-primary" href="#">Додати Групу</a>
         </div>
       </div>
 
@@ -61,21 +53,17 @@
           <table class="table table-hover table-striped">
             <thead>
               <tr>
-                <th><a href="">№</a></th>
-                <th>Фото</th>
-                <th><a href="">Прізвище</a></th>
-                <th><a href="">Ім'я</a></th>
-                <th><a href="">№ Білету</a></th>
+                <th>#</th>
+                <th><a href="">Назва</a></th>
+                <th><a href="">Староста</a></th>
                 <th>Дії</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>1</td>
-                <td><img height="35" width="35" src="./img/ah.jpg" class="img-circle"></td>
-                <td><a title="Редагувати" href="#">Хопкінс</a></td>
-                <td><a title="Редагувати" href="#">Ентоні</a></td>
-                <td>42</td>
+                <td><a title="Редагувати" href="#">ЗСІ-11</a></td>
+                <td><a title="Редагувати" href="#">Хопкінс Ентоні</a></td>
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
@@ -100,10 +88,8 @@
 
               <tr>
                 <td>2</td>
-                <td><img height="35" width="35" src="./img/sy.jpg" class="img-circle"></td>
-                <td><a title="Редагувати" href="#">Йоханссон</a></td>
-                <td><a title="Редагувати" href="#">Скарлетт</a></td>
-                <td>11</td>
+                <td><a title="Редагувати" href="#">ЗСІ-12</a></td>
+                <td><a title="Редагувати" href="#">Йоханссон Скарлетт</a></td>
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
@@ -128,10 +114,8 @@
 
               <tr>
                 <td>3</td>
-                <td><img height="35" width="35" src="./img/mj.jpg" class="img-circle"></td>
-                <td><a title="Редагувати" href="#">Джордан</a></td>
-                <td><a title="Редагувати" href="#">Майкл</a></td>
-                <td>23</td>
+                <td><a title="Редагувати" href="#">ЗСІ-13</a></td>
+                <td><a title="Редагувати" href="#">Джордан Майкл</a></td>
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
@@ -158,13 +142,9 @@
 
           <nav>
             <ul class="pagination">
-              <li><a href="#">&laquo;</a></li>
-              <li><a href="#">1</a></li>
-              <li class="active"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&raquo;</a></li>
+              <li class="active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">Далі</a></li>
             </ul>
           </nav>          
         </div>        
