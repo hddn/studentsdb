@@ -1,56 +1,23 @@
-<!DOCTYPE html>
-<html lang="uk">
+{% extends "students/base.html" %}
 
-  <head>
-    <meta charset="UTF-8"/>
-    <title>Відвідування</title>
-    <meta name="description" value="Система Обліку Студентів Навчального Закладу"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/main.css">
-    
-  </head>
+{% load static from staticfiles%}
 
-  <body>
-    <div class="container">
+{% block meta_title%}Відвідування{% endblock meta_title %}
 
-      <div class="row" id="header">
-        <div class="col-xs-8">
-          <h1>Сервіс Обліку Студентів</h1>
-        </div>
+{% block title %}Відвідування{% endblock title%}
 
-        <div class="col-xs-4" id="group-selector">
-          <strong>Група:</strong>
-            <select>
-              <option value="">Усі студенти</option>
-              <option value="">ЗСІ-11</option>
-              <option value="">ЗСІ-12</option>
-            </select>
-        </div>        
-      </div>
-
-      <div class="row" id="sub-header">
-        <div class="col-xs-12">
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#">Студенти</a></li>
-            <li role="presentation"><a href="#">Відвідування</a></li>
-            <li role="presentation"><a href="#">Групи</a></li>
-          </ul>    
-        </div>                
-      </div>
-      
+{% block content %}
+    </div> 
       <div class="row" id="content">
-        <div class="col-xs-12">
-          <h2>Облік Відвідування</h2>
+        <nav>
+          <ul class="pager">
+            <li><a href="#">&larr;</a></li>
+            <li>Жовтень 2015</li>
+            <li><a href="#">&rarr;</a></li>
+          </ul>
+        </nav> 
 
-          <nav>
-            <ul class="pager">
-              <li><a href="#">&larr;</a></li>
-              <li>Жовтень 2015</li>
-              <li><a href="#">&rarr;</a></li>
-            </ul>
-          </nav> 
-
-          <table class="table table-hover table-striped table-bordered">
+        <table class="table table-hover table-striped table-bordered">
             <thead>
               <tr>
                 <th>#</th>
@@ -87,12 +54,14 @@
                 <th>Чт 30</th>
                 <th>Пт 31</th>                
               </tr>
-            </thead>
+          </thead>
 
-            <tbody>
+          <tbody>
+            {% for student in students %}
               <tr>
-                <td>1</td>
-                <td><a title="Редагувати" href="#">Хопкінс Ентоні</a></td>
+                <td>{{ forloop.counter }}</td>
+                <td><a title="Редагувати" href="{% url "students_edit" student.id %}">
+                {{ student.last_name }} {{ student.first_name }}</a></td>
                 <td><input type="checkbox"></td>
                 <td><input type="checkbox"></td>
                 <td><input type="checkbox"></td>
@@ -125,96 +94,12 @@
                 <td><input type="checkbox"></td>
                 <td><input type="checkbox"></td>
               </tr>
-
-              <tr>
-                <td>2</td>
-                <td><a title="Редагувати" href="#">Йоханссон Скарлетт</a></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-              </tr>
-
-              <tr>
-                <td>3</td>
-                <td><a title="Редагувати" href="#">Джордан Майкл</a></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-              </tr>
-            </tbody>
-          </table>
+            {% endfor %}             
+          </tbody>
+        </table>
 
                  
         </div>        
       </div>
 
-      <div class="row" id="footer">
-        <div class="col-xs-12">
-          &copy; 2015 Сервіс обліку студентів
-        </div>        
-      </div>
-
-    </div>
-    
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-  </body>
-</html>
+{% endblock content %}
