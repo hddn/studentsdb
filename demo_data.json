@@ -1,0 +1,273 @@
+[
+{
+    "fields": {
+        "model": "logentry",
+        "app_label": "admin"
+    },
+    "model": "contenttypes.contenttype"
+    
+},
+{
+    "fields": {
+        "model": "permission",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype"
+    
+},
+{
+    "fields": {
+        "model": "group",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype"
+   
+},
+{
+    "fields": {
+        "model": "user",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype"
+    
+},
+{
+    "fields": {
+        "model": "contenttype",
+        "app_label": "contenttypes"
+    },
+    "model": "contenttypes.contenttype"
+    
+},
+{
+    "fields": {
+        "model": "session",
+        "app_label": "sessions"
+    },
+    "model": "contenttypes.contenttype"
+    
+},
+{
+    "fields": {
+        "model": "student",
+        "app_label": "students"
+    },
+    "model": "contenttypes.contenttype"
+    
+},
+{
+    "fields": {
+        "model": "group",
+        "app_label": "students"
+    },
+    "model": "contenttypes.contenttype"
+    
+},
+{
+    "fields": {
+        "expire_date": "2015-09-15T19:48:16.592Z",
+        "session_data": "NzkyNWUwYzk2ZTQwMDg2ZDcxZjFlZGRmNTQ0ZTQ5MWYxMzE0ODAyOTp7Il9hdXRoX3VzZXJfaGFzaCI6IjM4ZjRjNjQ2OWI1N2U0OTYxYmI1YzllZDBkYTljYTc0ZTUwYTM0YjkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "ifk7eumgwg018x52zt943dm1akmjpayd"
+},
+{
+    "fields": {
+        "first_name": "\u041c\u0430\u0439\u043a\u043b",
+        "last_name": "\u0414\u0436\u043e\u0440\u0434\u0430\u043d",
+        "middle_name": "",
+        "photo": "./mj.jpg",
+        "notes": "",
+        "student_group": 1,
+        "birthday": "2015-09-02",
+        "ticket": "23"
+    },
+    "model": "students.student",
+    "pk": 1
+},
+{
+    "fields": {
+        "first_name": "\u0421\u043a\u0430\u0440\u043b\u0435\u0442\u0442",
+        "last_name": "\u0419\u043e\u0445\u0430\u043d\u0441\u0441\u043e\u043d",
+        "middle_name": "",
+        "photo": "./sy.jpg",
+        "notes": "",
+        "student_group": 2,
+        "birthday": "2015-09-02",
+        "ticket": "42"
+    },
+    "model": "students.student",
+    "pk": 2
+},
+{
+    "fields": {
+        "first_name": "\u0415\u043d\u0442\u043e\u043d\u0456",
+        "last_name": "\u0425\u043e\u043f\u043a\u0456\u043d\u0441",
+        "middle_name": "",
+        "photo": "./ah.jpg",
+        "notes": "",
+        "student_group": 2,
+        "birthday": "2015-09-02",
+        "ticket": "11"
+    },
+    "model": "students.student",
+    "pk": 3
+},
+{
+    "fields": {
+        "first_name": "\u041b\u0435\u0411\u0440\u043e\u043d",
+        "last_name": "\u0414\u0436\u0435\u0439\u043c\u0441",
+        "middle_name": "",
+        "photo": "",
+        "notes": "",
+        "student_group": 1,
+        "birthday": "2015-09-02",
+        "ticket": "22"
+    },
+    "model": "students.student",
+    "pk": 4
+},
+{
+    "fields": {
+        "first_name": "\u0421\u0442\u0435\u0444\u0444\u0435\u043d",
+        "last_name": "\u041a\u0430\u0440\u0440\u0456",
+        "middle_name": "",
+        "photo": "",
+        "notes": "",
+        "student_group": 1,
+        "birthday": "2015-09-02",
+        "ticket": "30"
+    },
+    "model": "students.student",
+    "pk": 5
+},
+{
+    "fields": {
+        "first_name": "\u0415\u043d\u0434\u0440\u044e",
+        "last_name": "\u0411\u043e\u0433\u0443\u0442",
+        "middle_name": "",
+        "photo": "",
+        "notes": "",
+        "student_group": 1,
+        "birthday": "2015-09-02",
+        "ticket": "12"
+    },
+    "model": "students.student",
+    "pk": 6
+},
+{
+    "fields": {
+        "first_name": "\u0420\u0430\u0439\u0430\u043d",
+        "last_name": "\u0413\u043e\u0441\u043b\u0456\u043d\u0433",
+        "middle_name": "",
+        "photo": "",
+        "notes": "",
+        "student_group": 2,
+        "birthday": "2015-09-02",
+        "ticket": "101"
+    },
+    "model": "students.student",
+    "pk": 7
+},
+{
+    "fields": {
+        "first_name": "\u0424\u0456\u043b",
+        "last_name": "\u0410\u0439\u0432\u0456",
+        "middle_name": "",
+        "photo": "",
+        "notes": "",
+        "student_group": 5,
+        "birthday": "2015-09-04",
+        "ticket": "77"
+    },
+    "model": "students.student",
+    "pk": 8
+},
+{
+    "fields": {
+        "first_name": "\u0424\u0456\u043b",
+        "last_name": "\u0413\u0430\u043b\u044c\u0444\u043e\u043d\u0434",
+        "middle_name": "",
+        "photo": "",
+        "notes": "",
+        "student_group": 5,
+        "birthday": "2015-09-04",
+        "ticket": "99"
+    },
+    "model": "students.student",
+    "pk": 9
+},
+{
+    "fields": {
+        "first_name": "\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440",
+        "last_name": "\u0423\u0441\u0438\u043a",
+        "middle_name": "",
+        "photo": "",
+        "notes": "",
+        "student_group": 4,
+        "birthday": "2015-09-04",
+        "ticket": "10"
+    },
+    "model": "students.student",
+    "pk": 10
+},
+{
+    "fields": {
+        "first_name": "\u0414\u0436\u0438\u043c\u0456",
+        "last_name": "\u0425\u0435\u043d\u0434\u0440\u0456\u043a\u0441",
+        "middle_name": "",
+        "photo": "",
+        "notes": "",
+        "student_group": 3,
+        "birthday": "2015-09-04",
+        "ticket": "111"
+    },
+    "model": "students.student",
+    "pk": 11
+},
+{
+    "fields": {
+        "notes": "",
+        "leader": 1,
+        "title": "\u0411\u0430\u0441\u043a\u0435\u0442\u0431\u043e\u043b\u0456\u0441\u0442\u0438"
+    },
+    "model": "students.group",
+    "pk": 1
+},
+{
+    "fields": {
+        "notes": "",
+        "leader": 2,
+        "title": "\u0410\u043a\u0442\u043e\u0440\u0438"
+    },
+    "model": "students.group",
+    "pk": 2
+},
+{
+    "fields": {
+        "notes": "",
+        "leader": 11,
+        "title": "\u041c\u0443\u0437\u0438\u043a\u0430\u043d\u0442\u0438"
+    },
+    "model": "students.group",
+    "pk": 3
+},
+{
+    "fields": {
+        "notes": "",
+        "leader": 10,
+        "title": "\u0411\u043e\u043a\u0441\u0435\u0440\u0438"
+    },
+    "model": "students.group",
+    "pk": 4
+},
+{
+    "fields": {
+        "notes": "",
+        "leader": 8,
+        "title": "\u041f\u043e\u043a\u0435\u0440\u0438\u0441\u0442\u0438"
+    },
+    "model": "students.group",
+    "pk": 5
+}
+]

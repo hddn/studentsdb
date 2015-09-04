@@ -16,22 +16,33 @@
       <div class="row" id="table">
         <div class="col-xs-12">
           <table class="table table-hover table-striped">
+          {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
             <thead>
               <tr>
                 <th>#</th>
-                <th><a href="">Назва</a></th>
-                <th><a href="">Староста</a></th>
+                <th><a href="{% url "groups" %}?order_by=title{% if order_by == 'title' and reverse != '1' %}&amp;reverse=1{% endif %}">Назва
+                {% if order_by == 'title' and reverse != '1' %}
+                &uarr;
+                {% elif order_by == 'title' and reverse == '1' %}
+                &darr;
+                {% endif %}</a></th>
+                <th><a href="{% url "groups" %}?order_by=leader{% if order_by == 'leader' and reverse != '1' %}&amp;reverse=1{% endif %}">Староста
+                {% if order_by == 'leader' and reverse != '1' %}
+                &uarr;
+                {% elif order_by == 'leader' and reverse == '1' %}
+                &darr;
+                {% endif %}</a></th>
                 <th>Дії</th>
               </tr>
             </thead>
             <tbody>
-              {% for student in students %}
+              {% for group in groups %}
               <tr>
-                <td>{{ forloop.counter }}</td>
-                <td><a title="Редагувати" href="{% url "groups_edit" student.id %}">
-                    {{ student.group }}</a></td>
-                <td><a title="Редагувати" href="{% url "students_edit" student.id %}">
-                    {{ student.first_name }} {{ student.last_name }}</a></td>
+                <td>{{ group.id }}</td>
+                <td><a title="Редагувати" href="{% url "groups_edit" group.id %}">
+                    {{ group.title }}</a></td>
+                <td><a title="Редагувати" href="{% url "students_edit" group.leader.id %}">
+                    {{ group.leader.first_name }} {{ group.leader.last_name }}</a></td>
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
@@ -43,10 +54,10 @@
                         <a role="menuitem" tabindex="-1" href="/journal/1">Відвідування</a>                        
                       </li>
                       <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="{% url "students_edit" student.id %}">Редагувати</a>                        
+                        <a role="menuitem" tabindex="-1" href="{% url "groups_edit" group.id %}">Редагувати</a>                        
                       </li>
                       <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="{% url "students_delete" student.id %}">Видалити</a>                        
+                        <a role="menuitem" tabindex="-1" href="{% url "groups_delete" group.id %}">Видалити</a>                        
                       </li>                      
                     </ul>
                     
@@ -57,13 +68,22 @@
             </tbody>
           </table>
 
-          <nav>
+          {% if groups.has_other_pages %}
+          
             <ul class="pagination">
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">Далі</a></li>
+              <li><a href="{% url "groups" %}?page=1&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}">
+              &laquo;</a></li>
+              {% for p in groups.paginator.page_range %}
+              <li {% if groups.number == p %}class="active"{% endif %}>
+              <a href="{% url "groups" %}?page={{ p }}&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}">
+              {{ p }}</a></li>
+              {% endfor %}
+              <li><a href="{% url "groups" %}?page={{ students.paginator.num_pages }}&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}">&raquo;</a></li>
             </ul>
-          </nav>  
+          </nav>
+          
+          {% endif %}
+          {% endwith %}
         </div>        
       </div>
 {% endblock content %}     

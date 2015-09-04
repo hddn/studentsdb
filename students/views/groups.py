@@ -2,31 +2,30 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from ..models import Group
 # Create your views here.
 
 
 def groups_list(request):
-    students = (
-        {'id': 1,
-         'first_name': u'Ентоні',
-         'last_name': u'Хопкінс',
-         'ticket': 42,
-         'group': 'ЗСІ-11',   
-         'image': 'img/ah.jpg'},
-         {'id': 2,
-         'first_name': u'Скарлетт',
-         'last_name': u'Йоханссон',
-         'ticket': 11,
-         'group': 'ЗСІ-12',
-         'image': 'img/sy.jpg'},
-         {'id': 3,
-         'first_name': u'Майкл',
-         'last_name': u'Джордан',
-         'ticket': 23,
-         'group': 'ЗСІ-13',
-         'image': 'img/mj.jpg'},
-         )
-    return render(request, 'students/groups.html', {'students': students})
+    groups = Group.objects.all()
+
+    order_by = request.GET.get('order_by', '')
+    if order_by in ('title', 'leader'):
+        groups = groups.order_by(order_by)
+        if request.GET.get('reverse', '') == '1':
+            groups = groups.reverse()
+
+    paginator = Paginator(groups, 3)
+    page = request.GET.get('page')
+    try:
+        groups = paginator.page(page)
+    except PageNotAnInteger:
+        groups = paginator.page(1)
+    except EmptyPage:
+        groups = paginator.page(paginator.num_pages)
+    
+    return render(request, 'students/groups.html', {'groups': groups})
 
 
 def groups_add(request):
