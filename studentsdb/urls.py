@@ -37,6 +37,8 @@ urlpatterns = patterns('',
     url(r'^journal/$', 'students.views.journal.journal', name='journal'),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^exams/$', 'students.views.exams.exams_list', name='exams'),
     )
 
 if DEBUG:
