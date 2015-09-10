@@ -47,15 +47,20 @@
         </div>                
       </div>
 
-      {% comment "Not used so far" %}
+      
       <div class="row">
         <div class="col-xs-12">
+
+          {% block status_message %}
+          {% if request.GET.status_message %}
           <div class="alert alert-warning" role="alert">
-            Зміни скасовано
+            {{ request.GET.status_message }}
           </div>
+          {% endif %}
+          {% endblock %}
         </div>
       </div>
-      {% endcomment %}
+      
 
       <div class="row" id="table-header">
         <div class="col-xs-10">
