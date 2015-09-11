@@ -39,6 +39,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^exams/$', 'students.views.exams.exams_list', name='exams'),
+
+    url(r'^contact-admin/$', 'students.views.contact-admin.contact_admin', 
+        name='contact_admin'),
     )
 
 if DEBUG:
