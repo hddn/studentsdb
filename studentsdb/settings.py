@@ -77,14 +77,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'studentsdb.wsgi.application'
 
 
-ADMIN_EMAIL = 'admin@studentsdb.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'hddnsmile@gmail.com'
-EMAIL_HOST_PASSWORD = 'exnlintft049605'
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
