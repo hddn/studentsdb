@@ -39,10 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'students',
 )
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -77,14 +75,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'studentsdb.wsgi.application'
 
 
-ADMIN_EMAIL = 'admin@studentsdb.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'hddnsmile@gmail.com'
-EMAIL_HOST_PASSWORD = 'exnlintft049605'
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -94,7 +84,7 @@ EMAIL_USE_SSL = True
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'uk'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
