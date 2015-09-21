@@ -8,7 +8,9 @@ from django.core.urlresolvers import reverse
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-from studentsdb.email import ADMIN_EMAIL
+from django.views.generic.edit import FormView
+
+from studentsdb.settings import ADMIN_EMAIL
 
 
 class ContactForm(forms.Form):
@@ -41,28 +43,23 @@ class ContactForm(forms.Form):
         widget=forms.Textarea)
 
 
-def contact_admin(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
+class ContactView(FormView):
+    template_name = 'contact_admin/form.html'
+    form_class = ContactForm
 
-        if form.is_valid():
-            subject = form.cleaned_data['subject']
-            message = form.cleaned_data['message']
-            from_email = form.cleaned_data['from_email']
+    def form_valid(self, form):
+        subject = form.cleaned_data['subject']
+        message = form.cleaned_data['message']
+        from_email = form.cleaned_data['from_email']
 
-            try:
-                send_mail(subject, message, from_email, [ADMIN_EMAIL])
+        try:
+            send_mail(subject, message, from_email, [ADMIN_EMAIL])
 
-            except Exception:
-                message = u'Під час відправки листа виникла помилка'
+        except Exception:
+            message = u'Під час відправки листа виникла помилка'
 
-            else:
-                message = u'Повідомлення успішно надіслане!'
+        else:
+            message = u'Повідомлення успішно надіслане!'
 
-            return HttpResponseRedirect(
-                u'%s?status_message=%s' % (reverse('contact_admin'), message))
-
-    else:
-        form = ContactForm()
-
-    return render(request, 'contact_admin/form.html', {'form': form})
+        return HttpResponseRedirect(
+            u'%s?status_message=%s' % (reverse('contact_admin'), message))
