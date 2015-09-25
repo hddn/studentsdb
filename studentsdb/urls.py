@@ -18,6 +18,7 @@ from django.contrib import admin
 from .settings import MEDIA_ROOT, DEBUG
 from students.views.students import StudentUpdateView, StudentDeleteView, StudentAddView
 from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView
+from students.views.journal import JournalView
 from students.views.contact_admin import ContactView
 
 urlpatterns = patterns('',
@@ -37,7 +38,7 @@ urlpatterns = patterns('',
     url(r'^groups/(?P<pk>\d+)/delete/$', GroupDeleteView.as_view(), 
         name='groups_delete'),
 
-    url(r'^journal/$', 'students.views.journal.journal', name='journal'),
+    url(r'^journal/$', JournalView.as_view(), name='journal'),
 
     url(r'^admin/', include(admin.site.urls)),
 

@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from ..models.student import Student
+from ..models import Student
 
 from django.forms import ModelForm
 from django.views.generic import UpdateView, DeleteView, CreateView
