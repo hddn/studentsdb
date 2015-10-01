@@ -3,7 +3,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.forms import ModelForm
 from django.views.generic import UpdateView, DeleteView, CreateView
@@ -13,11 +12,16 @@ from crispy_forms.layout import Layout, Submit
 from crispy_forms.bootstrap import FormActions
 
 from ..models import Group
+from ..util import paginate, get_current_group
 # Create your views here.
 
 
 def groups_list(request):
-    groups = Group.objects.all()
+    current_group = get_current_group(request)
+    if current_group:
+        groups = Group.objects.filter(title=current_group.title)
+    else:
+        groups = Group.objects.all()
 
     order_by = request.GET.get('order_by', '')
     if order_by in ('title', 'leader'):
@@ -25,16 +29,9 @@ def groups_list(request):
         if request.GET.get('reverse', '') == '1':
             groups = groups.reverse()
 
-    paginator = Paginator(groups, 3)
-    page = request.GET.get('page')
-    try:
-        groups = paginator.page(page)
-    except PageNotAnInteger:
-        groups = paginator.page(1)
-    except EmptyPage:
-        groups = paginator.page(paginator.num_pages)
+    context = paginate(groups, 3, request, {}, var_name='groups')
     
-    return render(request, 'students/groups.html', {'groups': groups})
+    return render(request, 'students/groups.html', context)
 
 
 class GroupEditForm(ModelForm):

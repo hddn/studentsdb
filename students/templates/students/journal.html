@@ -17,6 +17,11 @@
 
   {% else %}
 
+  <div class="alert alert-warning">
+    Зміни зберігаються автоматично при кожному кліці по клітинці таблиці.
+    <span id="ajax-progress-indicator"> Збереження...</span>    
+  </div>
+
   <p id="journal-nav" class="text-center">
     <a href="?month={{ prev_month }}" title="Попередній місяць">&larr;</a>
     <strong>{{ month_verbose }} {{ year }}</strong>
@@ -69,7 +74,7 @@
 </table>
 {% endif %}
 
-{% with odject_list=students %}
+{% with object_list=students %}
   {% include "students/pagination.html" %}
 {% endwith %}
 

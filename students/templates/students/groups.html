@@ -67,23 +67,11 @@
               {% endfor %}
             </tbody>
           </table>
-
-          {% if groups.has_other_pages %}
-          
-            <ul class="pagination">
-              <li><a href="{% url "groups" %}?page=1&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}">
-              &laquo;</a></li>
-              {% for p in groups.paginator.page_range %}
-              <li {% if groups.number == p %}class="active"{% endif %}>
-              <a href="{% url "groups" %}?page={{ p }}&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}">
-              {{ p }}</a></li>
-              {% endfor %}
-              <li><a href="{% url "groups" %}?page={{ groups.paginator.num_pages }}&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}">&raquo;</a></li>
-            </ul>
-          </nav>
-          
-          {% endif %}
           {% endwith %}
         </div>        
       </div>
+{% with object_list=groups %}
+  {% include "students/pagination.html" %}
+{% endwith %}
+
 {% endblock content %}     

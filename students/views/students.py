@@ -3,9 +3,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from ..models import Student
+from ..util import paginate, get_current_group
 
 from django.forms import ModelForm
 from django.views.generic import UpdateView, DeleteView, CreateView
@@ -99,7 +99,11 @@ class StudentDeleteView(DeleteView):
 
 
 def students_list(request):
-    students = Student.objects.all()
+    current_group = get_current_group(request)
+    if current_group:
+        students = Student.objects.filter(student_group=current_group)
+    else:
+        students = Student.objects.all()
 
     order_by = request.GET.get('order_by', '')
     if order_by in ('last_name', 'first_name', 'ticket'):
@@ -107,13 +111,6 @@ def students_list(request):
         if request.GET.get('reverse', '') == '1':
             students = students.reverse()
 
-    paginator = Paginator(students, 3)
-    page = request.GET.get('page')
-    try:
-        students = paginator.page(page)
-    except PageNotAnInteger:
-        students = paginator.page(1)
-    except EmptyPage:
-        students = paginator.page(paginator.num_pages)
-
-    return render(request, 'students/students_list.html', {'students': students})
+    context = paginate(students, 3, request, {}, var_name='students')
+    
+    return render(request, 'students/students_list.html', context)
