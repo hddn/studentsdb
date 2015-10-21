@@ -8,7 +8,7 @@
 
 {% block content %}
   </div>
-  <form action="{% url "students_delete" object.id %}" method="post">
+  <form action="{% url "groups_delete" object.id %}" method="post">
     {% csrf_token %}
     <p>Ви дійсно хочете видалити групу "{{ object }}"?</p>
     <input type="submit" value="Так" name="delete_button" class="btn btn-danger">

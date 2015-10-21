@@ -9,7 +9,7 @@
 {% block content %}
         
         <div class="col-xs-2" id="add-student">
-          <a class="btn btn-primary" href="{% url "groups_add" %}">Додати Групу</a>
+          <a class="btn btn-primary add-form-link" href="{% url "groups_add" %}">Додати Групу</a>
         </div>
       </div>
 
@@ -39,9 +39,9 @@
               {% for group in groups %}
               <tr>
                 <td>{{ group.id }}</td>
-                <td><a title="Редагувати" href="{% url "groups_edit" group.id %}">
+                <td><a title="Редагувати" href="{% url "groups_edit" group.id %}" class="student-edit-form-link">
                     {{ group.title }}</a></td>
-                <td><a title="Редагувати" href="{% url "students_edit" group.leader.id %}">
+                <td><a title="Редагувати" href="{% url "students_edit" group.leader.id %}" class="student-edit-form-link">
                     {{ group.leader.first_name }} {{ group.leader.last_name }}</a></td>
                 <td>
                   <div class="dropdown">
@@ -51,13 +51,10 @@
                     </button>
                     <ul class="dropdown-menu" role="menu">
                       <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="/journal/1">Відвідування</a>                        
+                        <a role="menuitem" tabindex="-1" class="student-edit-form-link" href="{% url "groups_edit" group.id %}">Редагувати</a>                        
                       </li>
                       <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="{% url "groups_edit" group.id %}">Редагувати</a>                        
-                      </li>
-                      <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="{% url "groups_delete" group.id %}">Видалити</a>                        
+                        <a role="menuitem" tabindex="-1" href="{% url "groups_delete" group.id %}">Видалити</a>
                       </li>                      
                     </ul>
                     
@@ -74,4 +71,4 @@
   {% include "students/pagination.html" %}
 {% endwith %}
 
-{% endblock content %}     
+{% endblock content %}

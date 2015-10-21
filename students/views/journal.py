@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from calendar import monthrange, weekday, day_abbr
 
 from ..models import MonthJournal, Student
-from ..util import paginate
+from ..util import paginate, get_current_group
 
 
 class JournalView(TemplateView):
@@ -39,7 +39,10 @@ class JournalView(TemplateView):
             'verbose': day_abbr[weekday(myear, mmonth, d)][:2]}
             for d in xrange(1, number_of_days + 1)]
 
-        if kwargs.get('pk'):
+        current_group = get_current_group(self.request)
+        if current_group:
+            queryset = Student.objects.filter(student_group=current_group)
+        elif kwargs.get('pk'):
             queryset = [Student.objects.get(pk=kwargs['pk'])]
         else:
             queryset = Student.objects.all().order_by('last_name')

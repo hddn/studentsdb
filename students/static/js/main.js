@@ -50,7 +50,7 @@ function initDateFields() {
 }
 
 function initEditStudentPage() {
-    $('a.student-edit-form-link').click(function(event){
+    $('a.student-edit-form-link, a.add-form-link').click(function(event){
         var link = $(this);
         $.ajax({
             'url': link.attr('href'),
