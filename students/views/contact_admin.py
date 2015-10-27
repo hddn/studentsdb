@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 
 from django.shortcuts import render
 from django import forms
@@ -57,7 +58,8 @@ class ContactView(FormView):
 
         except Exception:
             message = u'Під час відправки листа виникла помилка'
-
+            logger = logging.getLogger(__name__)
+            logger.exception(message)
         else:
             message = u'Повідомлення успішно надіслане!'
 
