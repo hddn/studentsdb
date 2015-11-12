@@ -58,7 +58,7 @@ function initEditStudentPage() {
             'type': 'get',
             'success': function(data, status, xhr){
                 if(status != 'success') {
-                    alert('Помилка на сервері. Спробуйте пізніше.');
+                    alert(gettext('There was some error on the server. Please, try again later'));
                     return false;
                 }
                 var modal = $('#myModal'), html = $(data), form = html.find('.form-horizontal');
@@ -74,7 +74,7 @@ function initEditStudentPage() {
                 });                
             },
             'error': function(){
-                alert('Помилка на сервері. Спробуйте пізніше.');
+                alert(gettext('There was some error on the server. Please, try again later'));
                 return false;
             }
         });
@@ -91,7 +91,7 @@ function initEditStudentForm(form, modal) {
     form.ajaxForm({
         'dataType': 'html',
         'error': function(){
-            alert('Помилка на сервері. Спробуйте пізніше.');
+            alert(gettext('There was some error on the server. Please, try again later'));
             return false;
         },
         'success': function(data, status, xhr){

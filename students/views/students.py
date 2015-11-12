@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -13,6 +12,8 @@ from django.views.generic import UpdateView, DeleteView, CreateView
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
 from crispy_forms.bootstrap import FormActions
+
+from django.utils.translation import ugettext as _
 
 # Create your views here.
 
@@ -51,8 +52,8 @@ class StudentEditForm(ModelForm):
 
         self.helper.layout = Layout(
             self.helper.layout, FormActions(
-                Submit('add_button', u'Зберегти', css_class="btn btn-primary"),
-                Submit('cancel_button', u'Скасувати', css_class="btn btn-link"),
+                Submit('add_button', _(u'Save'), css_class="btn btn-primary"),
+                Submit('cancel_button', _(u'Cancel'), css_class="btn btn-link"),
             ))
 
 
@@ -62,13 +63,14 @@ class StudentUpdateView(UpdateView):
     form_class = StudentEditForm
     
     def get_success_url(self):
-        return u'%s?status_message=Студента успішно збережено!' % reverse('home')
+        return u'%s?status_message=%s' % (reverse('home'),
+                                          _(u'Student updated successfully!'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
             return HttpResponseRedirect(
-                u'%s?status_message=Редагування студента відмінено!' %
-                reverse('home'))
+                u'%s?status_message=%s' % (reverse('home'),
+                                           _(u'Student updating canceled')))
         else:
             return super(StudentUpdateView, self).post(request, *args, **kwargs)
 
@@ -79,13 +81,14 @@ class StudentAddView(CreateView):
     form_class = StudentEditForm
 
     def get_success_url(self):
-        return u'%s?status_message=Студента успішно збережено!' % reverse('home')
+        return u'%s?status_message=%s' % (reverse('home'),
+                                          _(u'Student added successfully!'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
             return HttpResponseRedirect(
-                u'%s?status_message=Додавання студента відмінено!' %
-                reverse('home'))
+                u'%s?status_message=%s' % (reverse('home'),
+                                           _(u'Student adding canceled')))
         else:
             return super(StudentAddView, self).post(request, *args, **kwargs)
 
@@ -95,7 +98,8 @@ class StudentDeleteView(DeleteView):
     template_name = 'students/students_confirm_delete.html'
 
     def get_success_url(self):
-        return u'%s?status_message=Студента видалено' % reverse('home')
+        return u'%s?status_message=%s' % (reverse('home'),
+                                          _(u'Student deleted'))
 
 
 def students_list(request):

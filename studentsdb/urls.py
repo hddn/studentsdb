@@ -20,6 +20,13 @@ from students.views.students import StudentUpdateView, StudentDeleteView, Studen
 from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView
 from students.views.journal import JournalView
 from students.views.contact_admin import ContactView
+from django.views.generic import RedirectView
+from django.contrib.auth import views as auth_views
+
+
+js_info_dict = {
+    'packages': ('students',),
+}
 
 urlpatterns = patterns('',
     url(r'^$', 'students.views.students.students_list', name='home'),
@@ -46,6 +53,15 @@ urlpatterns = patterns('',
 
     url(r'^contact-admin/$', ContactView.as_view(), 
         name='contact_admin'),
+
+    url(r'^jsi18n\.js$', 'django.views.i18n.javascript_catalog', js_info_dict),
+
+    url(r'^users/logout/$', auth_views.logout, kwargs={'next_page': 'home'},
+        name='auth_logout'),
+    url(r'^register/complete/$', RedirectView.as_view(pattern_name='home'),
+        name='registration_complete'),
+    url(r'^users/', include('registration.backends.simple.urls', 
+        namespace='users')),    
     )
 
 if DEBUG:
