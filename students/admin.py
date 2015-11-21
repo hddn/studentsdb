@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from .models import Student, Group, Exam, MonthJournal
-
 from django.core.urlresolvers import reverse
 from django.forms import ModelForm, ValidationError
+
+from .models import Student, Group, Exam, MonthJournal
 
 # Register your models here.
 

@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from .settings import MEDIA_ROOT, DEBUG
-from students.views.students import StudentUpdateView, StudentDeleteView, StudentAddView
-from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView
+from django.views.generic import RedirectView, TemplateView
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
+
+from students.views.students import StudentUpdateView, StudentDeleteView, StudentAddView, students_list
+from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView, groups_list
+from students.views.exams import exams_list
 from students.views.journal import JournalView
 from students.views.contact_admin import ContactView
-from django.views.generic import RedirectView
-from django.contrib.auth import views as auth_views
+
+from .settings import MEDIA_ROOT, DEBUG
 
 
 js_info_dict = {
@@ -29,39 +33,49 @@ js_info_dict = {
 }
 
 urlpatterns = patterns('',
-    url(r'^$', 'students.views.students.students_list', name='home'),
-    url(r'^students/add/$', StudentAddView.as_view(), 
+    url(r'^$', students_list, name='home'),
+    url(r'^students/add/$', login_required(StudentAddView.as_view()), 
         name='students_add'),
-    url(r'^students/(?P<pk>\d+)/edit/$', StudentUpdateView.as_view(), 
+    url(r'^students/(?P<pk>\d+)/edit/$',
+        login_required(StudentUpdateView.as_view()), 
         name='students_edit'),
-    url(r'^students/(?P<pk>\d+)/delete/$', StudentDeleteView.as_view(), 
+    url(r'^students/(?P<pk>\d+)/delete/$',
+        login_required(StudentDeleteView.as_view()), 
         name='students_delete'),
 
-    url(r'^groups/$', 'students.views.groups.groups_list', name='groups'),
-    url(r'^groups/add/$', GroupAddView.as_view(), 
+    url(r'^groups/$', login_required(groups_list), name='groups'),
+    url(r'^groups/add/$', login_required(GroupAddView.as_view()), 
         name='groups_add'),
-    url(r'^groups/(?P<pk>\d+)/edit/$', GroupUpdateView.as_view(), 
+    url(r'^groups/(?P<pk>\d+)/edit/$',
+        login_required(GroupUpdateView.as_view()), 
         name='groups_edit'),
-    url(r'^groups/(?P<pk>\d+)/delete/$', GroupDeleteView.as_view(), 
+    url(r'^groups/(?P<pk>\d+)/delete/$', 
+        login_required(GroupDeleteView.as_view()), 
         name='groups_delete'),
 
-    url(r'^journal/(?P<pk>\d+)?/?$', JournalView.as_view(), name='journal'),
+    url(r'^journal/(?P<pk>\d+)?/?$', 
+        login_required(JournalView.as_view()), name='journal'),
 
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^exams/$', 'students.views.exams.exams_list', name='exams'),
+    url(r'^exams/$', login_required(exams_list), name='exams'),
 
-    url(r'^contact-admin/$', ContactView.as_view(), 
+    url(r'^contact-admin/$', login_required(ContactView.as_view()), 
         name='contact_admin'),
 
     url(r'^jsi18n\.js$', 'django.views.i18n.javascript_catalog', js_info_dict),
 
+    url(r'^users/profile/$', login_required(TemplateView.as_view(
+        template_name='registration/profile.html')), name='profile'),
     url(r'^users/logout/$', auth_views.logout, kwargs={'next_page': 'home'},
         name='auth_logout'),
     url(r'^register/complete/$', RedirectView.as_view(pattern_name='home'),
         name='registration_complete'),
     url(r'^users/', include('registration.backends.simple.urls', 
-        namespace='users')),    
+        namespace='users')),
+
+    url('^social/', include('social.apps.django_app.urls',
+        namespace='social')),   
     )
 
 if DEBUG:

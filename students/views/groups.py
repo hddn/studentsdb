@@ -3,7 +3,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-
 from django.forms import ModelForm
 from django.views.generic import UpdateView, DeleteView, CreateView
 

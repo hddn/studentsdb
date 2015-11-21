@@ -42,11 +42,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'crispy_forms',
     'registration',
+    'social.apps.django_app.default',
     'students',
+    'studentsdb',
 )
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = (
+    'studentsdb.middleware.RequestTimeMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,6 +74,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
                 'students.context_processors.groups_processor',
             ],
         },
@@ -82,6 +87,18 @@ WSGI_APPLICATION = 'studentsdb.wsgi.application'
 
 REGISTRATION_OPEN = True
 
+LOGIN_URL = 'users:auth_login'
+
+LOGOUT_URL = 'users:auth_logout'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = ''
+
+SOCIAL_AUTH_FACEBOOK_SECRET = ''
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases

@@ -2,10 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-
-from ..models import Student
-from ..util import paginate, get_current_group
-
+from django.utils.translation import ugettext as _
 from django.forms import ModelForm
 from django.views.generic import UpdateView, DeleteView, CreateView
 
@@ -13,7 +10,11 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
 from crispy_forms.bootstrap import FormActions
 
-from django.utils.translation import ugettext as _
+from ..models import Student
+from ..util import paginate, get_current_group
+
+#from django.utils.decorators import method_decorator
+#from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -74,7 +75,7 @@ class StudentUpdateView(UpdateView):
         else:
             return super(StudentUpdateView, self).post(request, *args, **kwargs)
 
-
+    
 class StudentAddView(CreateView):
     model = Student
     template_name = 'students/students_add.html'
