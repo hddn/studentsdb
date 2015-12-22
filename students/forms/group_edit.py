@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
 from django.forms import ModelForm
 
 from crispy_forms.helper import FormHelper
@@ -38,8 +38,8 @@ class GroupEditForm(ModelForm):
 
         self.helper.layout = Layout(
             self.helper.layout, FormActions(
-                Submit('add_button', u'Зберегти', css_class="btn btn-primary"),
-                Submit('cancel_button', u'Скасувати', css_class="btn btn-link"),
+                Submit('add_button', _(u'Save'), css_class="btn btn-primary"),
+                Submit('cancel_button', _(u'Cancel'), css_class="btn btn-link"),
             ))
 
     class Meta:

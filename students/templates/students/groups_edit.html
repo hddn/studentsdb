@@ -2,16 +2,18 @@
 
 {% load static from staticfiles%}
 
+{% load i18n %}
+
 {% load crispy_forms_tags %}
 
-{% block meta_title%}Редагувати групу{% endblock meta_title %}
+{% block meta_title%}{% trans "Edit Group" %}{% endblock meta_title %}
 
-{% block title %}Редагувати групу{% endblock title%}
+{% block title %}{% trans "Edit Group" %}{% endblock title%}
 
 {% block status_message %}
     {% if form.errors %}
     <div class="alert alert-warning" role="alert">
-      Будь-ласка, виправте помилки
+      {% trans "Please, correct the errors" %}
     </div>
     {% endif %}
   {% endblock status_message %}
@@ -19,6 +21,6 @@
 {% block content %}
   </div>
 
-{% crispy form %}    
+{% crispy form %}
   
-{% endblock content %}     
+{% endblock content %} 
