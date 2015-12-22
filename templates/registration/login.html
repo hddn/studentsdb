@@ -6,25 +6,18 @@
 
 {% block title %}{% trans "Login Form"%}{% endblock title %}
 
+{% load crispy_forms_tags %}
+
+{% block status_message %}
+    {% if form.errors %}
+    <div class="alert alert-warning" role="alert">
+      {% trans "Correct errors" %}
+    </div>
+    {% endif %}
+  {% endblock status_message %}
+
 {% block content %}
 </div>
-<form action="{% url "users:auth_login" %}" method="post">
-
-  {% csrf_token %}
-  <input type="hidden" name="next" value="{% url "home" %}">
-
-  <div class="form-group">
-    <label for="login">{% trans "Username" %}</label>
-    <input type="text" class="form-control" id="login" value="" name="username">   
-  </div>
-
-  <div class="form-group">
-    <label for="password">{% trans "Password" %}</label>
-    <input type="password" class="form-control" id="password" value="" name="password">   
-  </div>
-
-  <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
-    
-</form>
+{% crispy form %}
 
 {% endblock content %}

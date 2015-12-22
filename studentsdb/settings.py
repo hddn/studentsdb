@@ -49,7 +49,6 @@ INSTALLED_APPS = (
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = (
-    'studentsdb.middleware.RequestTimeMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -100,6 +99,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = ''
 
 SOCIAL_AUTH_FACEBOOK_SECRET = ''
 
+LOGIN_REDIRECT_URL = PORTAL_URL
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 

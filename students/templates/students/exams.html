@@ -2,9 +2,11 @@
 
 {% load static from staticfiles%}
 
-{% block meta_title%}Іспити{% endblock meta_title %}
+{% load i18n %}
 
-{% block title %}Іспити{% endblock title%}
+{% block meta_title%}{% trans "Exams" %}{% endblock meta_title %}
+
+{% block title %}{% trans "Exams" %}{% endblock title%}
 
 {% block content %}
         
@@ -18,25 +20,25 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th><a href="{% url "exams" %}?order_by=subject{% if order_by == 'subject' and reverse != '1' %}&amp;reverse=1{% endif %}">Назва предмету
+                <th><a href="{% url "exams" %}?order_by=subject{% if order_by == 'subject' and reverse != '1' %}&amp;reverse=1{% endif %}">{% trans "Title" %}
                 {% if order_by == 'subject' and reverse != '1' %}
                 &uarr;
                 {% elif order_by == 'subject' and reverse == '1' %}
                 &darr;
                 {% endif %}</a></th>
-                <th><a href="{% url "exams" %}?order_by=teacher{% if order_by == 'teacher' and reverse != '1' %}&amp;reverse=1{% endif %}">Викладач
+                <th><a href="{% url "exams" %}?order_by=teacher{% if order_by == 'teacher' and reverse != '1' %}&amp;reverse=1{% endif %}">{% trans "Teacher" %}
                 {% if order_by == 'teacher' and reverse != '1' %}
                 &uarr;
                 {% elif order_by == 'teacher' and reverse == '1' %}
                 &darr;
                 {% endif %}</a></th>         
-                <th><a href="{% url "exams" %}?order_by=group{% if order_by == 'group' and reverse != '1' %}&amp;reverse=1{% endif %}">Група
+                <th><a href="{% url "exams" %}?order_by=group{% if order_by == 'group' and reverse != '1' %}&amp;reverse=1{% endif %}">{% trans "Group" %}
                 {% if order_by == 'group' and reverse != '1' %}
                 &uarr;
                 {% elif order_by == 'group' and reverse == '1' %}
                 &darr;
                 {% endif %}</a></th>
-                <th><a href="{% url "exams" %}?order_by=date{% if order_by == 'date' and reverse != '1' %}&amp;reverse=1{% endif %}">Дата
+                <th><a href="{% url "exams" %}?order_by=date{% if order_by == 'date' and reverse != '1' %}&amp;reverse=1{% endif %}">{% trans "Date" %}
                 {% if order_by == 'date' and reverse != '1' %}
                 &uarr;
                 {% elif order_by == 'date' and reverse == '1' %}
@@ -50,7 +52,7 @@
                 <td>{{ exam.id }}</td>
                 <td>{{ exam.subject }}</td>
                 <td>{{ exam.teacher }}</td>
-                <td><a title="Редагувати" href="{ url "groups_edit" exam.group.id }"></a>
+                <td><a title="{% trans "Edit" %}" href="{ url "groups_edit" exam.group.id }"></a>
                 {{ exam.group }}</td>
                 <td>{{ exam.date }}</td>
               </tr>

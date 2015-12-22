@@ -2,17 +2,19 @@
 
 {% load static from staticfiles%}
 
+{% load i18n %}
+
 {% load crispy_forms_tags %}
 
-{% block meta_title%}Зв’язок із Адміністратором{% endblock meta_title %}
+{% block meta_title%}{% trans "Contact Admin"%}{% endblock meta_title %}
 
-{% block title %}Зв’язок із Адміністратором{% endblock title%}
+{% block title %}{% trans "Contact Admin"%}{% endblock title%}
 
 {% block status_message %}
 
 {% if form.errors %}
   <div class="alert alert-warning" role="alert">
-    Будь-ласка, виправте помилки    
+    {% trans "Fix errors" %}    
   </div>
 {% endif %}
 

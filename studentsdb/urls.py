@@ -24,8 +24,10 @@ from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView
 from students.views.exams import exams_list
 from students.views.journal import JournalView
 from students.views.contact_admin import ContactView
+from students.forms.login import LoginForm
 
 from .settings import MEDIA_ROOT, DEBUG
+
 
 
 js_info_dict = {
@@ -67,6 +69,8 @@ urlpatterns = patterns('',
 
     url(r'^users/profile/$', login_required(TemplateView.as_view(
         template_name='registration/profile.html')), name='profile'),
+    url(r'^users/login/$', auth_views.login, 
+        kwargs={'authentication_form': LoginForm,}, name='auth_login'),
     url(r'^users/logout/$', auth_views.logout, kwargs={'next_page': 'home'},
         name='auth_logout'),
     url(r'^register/complete/$', RedirectView.as_view(pattern_name='home'),

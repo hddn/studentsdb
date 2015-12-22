@@ -61,7 +61,8 @@ function initEditStudentPage() {
                     alert(gettext('There was some error on the server. Please, try again later'));
                     return false;
                 }
-                var modal = $('#myModal'), html = $(data), form = html.find('.form-horizontal');
+                var modal = $('#myModal'), html = $(data), 
+                form = html.find('.form-horizontal');
                 modal.find('.modal-title').html(html.find('h2').text());
                 modal.find('.modal-body').html(form);
 
@@ -95,7 +96,8 @@ function initEditStudentForm(form, modal) {
             return false;
         },
         'success': function(data, status, xhr){
-            var html = $(data), newform = html.find('.form-horizontal');
+            var html = $(data), 
+            newform = html.find('.form-horizontal');
             modal.find('.modal-body').html(html.find('.alert'));
             if (newform.length > 0) {
                 modal.find('.modal-body').append(newform);
