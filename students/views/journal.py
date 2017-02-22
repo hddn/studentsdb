@@ -37,7 +37,7 @@ class JournalView(TemplateView):
         number_of_days = monthrange(myear, mmonth)[1]
         context['month_header'] = [{'day': d,
             'verbose': day_abbr[weekday(myear, mmonth, d)][:3]}
-            for d in xrange(1, number_of_days + 1)]
+            for d in range(1, number_of_days + 1)]
 
         current_group = get_current_group(self.request)
         if current_group:
@@ -58,7 +58,7 @@ class JournalView(TemplateView):
                 journal = None
 
             days = []
-            for day in xrange(1, number_of_days + 1):
+            for day in range(1, number_of_days + 1):
                 days.append({
                     'day': day,
                     'present': journal and getattr(
