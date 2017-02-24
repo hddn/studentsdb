@@ -24,8 +24,7 @@ class GroupEditForm(ModelForm):
         if add_form:
             self.helper.action = reverse('groups_add')
         else:
-            self.helper.action = reverse('groups_edit',
-                                         kwargs={'pk': kwargs['instance'].id})
+            self.helper.action = reverse('groups_edit', kwargs={'pk': kwargs['instance'].id})
 
         self.helper.form_method = 'POST'
         self.helper.form_class = 'form-horizontal'

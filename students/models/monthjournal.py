@@ -3,9 +3,10 @@ from django.utils.translation import ugettext as _
 
 
 class MonthJournal(models.Model):
-    '''Student Monthly Journal'''
+    """Student Monthly Journal"""
 
-    student = models.ForeignKey('Student',
+    student = models.ForeignKey(
+        'Student',
         verbose_name=_(u'Student'),
         blank=False,
         unique_for_month='date')
@@ -46,7 +47,5 @@ class MonthJournal(models.Model):
     present_day30 = models.BooleanField(default=False)
     present_day31 = models.BooleanField(default=False)
 
-    def __unicode__(self):
-        return u'%s: %d, %d' % (self.student.last_name, 
-                                self.date.month, 
-                                self.date.year)
+    def __str__(self):
+        return u'%s: %d, %d' % (self.student.last_name, self.date.month, self.date.year)

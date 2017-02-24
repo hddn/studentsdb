@@ -1,10 +1,9 @@
 
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 from django.views.generic import UpdateView, DeleteView, CreateView
-
 
 from ..models import Group
 from ..forms import GroupEditForm
@@ -36,14 +35,11 @@ class GroupUpdateView(UpdateView):
     form_class = GroupEditForm
 
     def get_success_url(self):
-        return u'%s?status_message=%s' % (reverse('home'),
-                                          _(u'Group saved'))
+        return '%s?status_message=%s' % (reverse('home'), _('Group saved'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect(
-                u'%s?status_message=%s' % (reverse('home'),
-                                           _(u'Canceled')))
+            return HttpResponseRedirect('%s?status_message=%s' % (reverse('home'), _('Canceled')))
         else:
             return super(GroupUpdateView, self).post(request, *args, **kwargs)
 
@@ -54,14 +50,11 @@ class GroupAddView(CreateView):
     form_class = GroupEditForm
 
     def get_success_url(self):
-        return u'%s?status_message=%s' % (reverse('home'),
-                                          _(u'Group added'))
+        return '%s?status_message=%s' % (reverse('home'), _('Group added'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect(
-                u'%s?status_message=%s' % (reverse('home'),
-                                           _(u'Canceled')))
+            return HttpResponseRedirect('%s?status_message=%s' % (reverse('home'), _('Canceled')))
         else:
             return super(GroupAddView, self).post(request, *args, **kwargs)
 
@@ -71,5 +64,4 @@ class GroupDeleteView(DeleteView):
     template_name = 'students/groups_confirm_delete.html'
     
     def get_success_url(self):
-        return u'%s?status_message=%s' % (reverse('home'),
-                                          _(u'Group deleted'))
+        return '%s?status_message=%s' % (reverse('home'), _('Group deleted'))

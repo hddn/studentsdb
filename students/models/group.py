@@ -3,6 +3,7 @@ from django.utils.translation import ugettext as _
 
 # Create your models here.
 
+
 class Group(models.Model):
 
     title = models.CharField(
@@ -10,7 +11,8 @@ class Group(models.Model):
         blank=False,
         verbose_name=_(u'Title'))
 
-    leader = models.OneToOneField('Student',
+    leader = models.OneToOneField(
+        'Student',
         blank=True,
         null=True,
         verbose_name=_(u'Leader'),
@@ -20,10 +22,8 @@ class Group(models.Model):
         blank=True,
         verbose_name=_(u'Notes'))
 
-    def __unicode__(self):
+    def __str__(self):
         if self.leader:
-            return u'%s (%s %s)' % (self.title, 
-                                    self.leader.first_name, 
-                                    self.leader.last_name)
+            return u'%s (%s %s)' % (self.title, self.leader.first_name, self.leader.last_name)
         else:
-            return u'%s' % (self.title)
+            return u'%s' % self.title

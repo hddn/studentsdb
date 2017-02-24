@@ -13,5 +13,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for name, model in self.models:
             if name in args:
-                self.stdout.write('Number of %ss in database: %d' % 
-                    (name, model.objects.count()))
+                self.stdout.write('Number of %ss in database: %d' % (name, model.objects.count()))

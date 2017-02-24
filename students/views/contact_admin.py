@@ -1,17 +1,15 @@
 
 import logging
 
-from django.shortcuts import render
 from django import forms
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext as _
+from django.views.generic.edit import FormView
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-
-from django.views.generic.edit import FormView
 
 from studentsdb.settings import ADMIN_EMAIL
 
@@ -31,17 +29,17 @@ class ContactForm(forms.Form):
         self.helper.label_class = 'col-sm-2 control-label'
         self.helper.field_class = 'col-sm-10'
 
-        self.helper.add_input(Submit('send_button', _(u'Send'))) 
+        self.helper.add_input(Submit('send_button', _('Send')))
 
     from_email = forms.EmailField(
-        label=_(u'Your E-mail'))
+        label=_('Your E-mail'))
 
     subject = forms.CharField(
-        label=_(u'Subject'),
+        label=_('Subject'),
         max_length=128)
 
     message = forms.CharField(
-        label=_(u'Message'),
+        label=_('Message'),
         max_length=2560,
         widget=forms.Textarea)
 
@@ -59,11 +57,10 @@ class ContactView(FormView):
             send_mail(subject, message, from_email, [ADMIN_EMAIL])
 
         except Exception:
-            message = _(u'An error occurred')
+            message = _('An error occurred')
             logger = logging.getLogger(__name__)
             logger.exception(message)
         else:
-            message = _(u'Message send successfully')
+            message = _('Message send successfully')
 
-        return HttpResponseRedirect(
-            u'%s?status_message=%s' % (reverse('contact_admin'), message))
+        return HttpResponseRedirect('%s?status_message=%s' % (reverse('contact_admin'), message))
