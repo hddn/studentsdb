@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 
+
 class Student(models.Model):
 
     first_name = models.CharField(
@@ -41,11 +42,12 @@ class Student(models.Model):
         blank=True,
         verbose_name=_(u'Notes'))
 
-    student_group = models.ForeignKey('Group',
+    student_group = models.ForeignKey(
+        'Group',
         verbose_name=_(u'Group'),
         blank=False,
         null=True,
         on_delete=models.PROTECT)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s %s' % (self.first_name, self.last_name)

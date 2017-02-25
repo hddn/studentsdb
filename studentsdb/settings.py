@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from .db import DATABASES
 from .email import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,7 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'crispy_forms',
     'registration',
-    'social.apps.django_app.default',
+    'social_django',
     'students',
     'studentsdb',
 )
@@ -73,8 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social.apps.django_app.context_processors.backends',
-                'social.apps.django_app.context_processors.login_redirect',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
                 'students.context_processors.groups_processor',
             ],
         },
@@ -91,7 +90,7 @@ LOGIN_URL = 'users:auth_login'
 LOGOUT_URL = 'users:auth_logout'
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.FacebookOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -103,7 +102,16 @@ LOGIN_REDIRECT_URL = PORTAL_URL
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'students_db',
+        'USER': 'stdb',
+        'PASSWORD': 'students_db',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 # Internationalization

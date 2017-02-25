@@ -8,6 +8,7 @@ from .models import UserProfile
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
 
+
 class UserAdmin(auth_admin.UserAdmin):
     inlines = (UserProfileInline,)
 

@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 from django.views.generic import UpdateView, DeleteView, CreateView
@@ -9,11 +9,7 @@ from ..models import Student
 from ..forms import StudentEditForm
 from ..util import paginate, get_current_group
 
-#from django.utils.decorators import method_decorator
-#from django.contrib.auth.decorators import login_required
-
 # Create your views here.
-
 
 
 class StudentUpdateView(UpdateView):
@@ -22,32 +18,26 @@ class StudentUpdateView(UpdateView):
     form_class = StudentEditForm
     
     def get_success_url(self):
-        return u'%s?status_message=%s' % (reverse('home'),
-                                          _(u'Student updated successfully!'))
+        return '%s?status_message=%s' % (reverse('home'), _('Student updated successfully!'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect(
-                u'%s?status_message=%s' % (reverse('home'),
-                                           _(u'Student updating canceled')))
+            return HttpResponseRedirect('%s?status_message=%s' % (reverse('home'), _('Student updating canceled')))
         else:
             return super(StudentUpdateView, self).post(request, *args, **kwargs)
 
-    
+
 class StudentAddView(CreateView):
     model = Student
     template_name = 'students/students_add.html'
     form_class = StudentEditForm
 
     def get_success_url(self):
-        return u'%s?status_message=%s' % (reverse('home'),
-                                          _(u'Student added successfully!'))
+        return '%s?status_message=%s' % (reverse('home'), _(u'Student added successfully!'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect(
-                u'%s?status_message=%s' % (reverse('home'),
-                                           _(u'Student adding canceled')))
+            return HttpResponseRedirect('%s?status_message=%s' % (reverse('home'), _('Student adding canceled')))
         else:
             return super(StudentAddView, self).post(request, *args, **kwargs)
 
@@ -57,8 +47,7 @@ class StudentDeleteView(DeleteView):
     template_name = 'students/students_confirm_delete.html'
 
     def get_success_url(self):
-        return u'%s?status_message=%s' % (reverse('home'),
-                                          _(u'Student deleted'))
+        return '%s?status_message=%s' % (reverse('home'), _(u'Student deleted'))
 
 
 def students_list(request):

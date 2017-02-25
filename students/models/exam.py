@@ -3,6 +3,7 @@ from django.utils.translation import ugettext as _
 
 # Create your models here.
 
+
 class Exam(models.Model):
 
     subject = models.CharField(
@@ -19,7 +20,8 @@ class Exam(models.Model):
         blank=False,
         verbose_name=_(u'Date'))
 
-    group = models.OneToOneField('Group',
+    group = models.OneToOneField(
+        'Group',
         blank=True,
         null=True,
         verbose_name=_(u'Group'),
@@ -29,10 +31,8 @@ class Exam(models.Model):
         blank=True,
         verbose_name=_(u'Notes'))
 
-    def __unicode__(self):
+    def __str__(self):
         if self.group:
-            return u'%s, %s (%s)' % (self.group, 
-                                    self.subject, 
-                                    self.date)
+            return u'%s, %s (%s)' % (self.group, self.subject, self.date)
         else:
             return u'%s (%s)' % (self.group, self.date)

@@ -9,13 +9,13 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
     class Meta(object):
-        verbose_name = _(u'User Profile')
+        verbose_name = _('User Profile')
 
     mobile_phone = models.CharField(
         max_length=12,
         blank=True,
-        verbose_name=(u'Mobile Phone'),
+        verbose_name=_('Mobile Phone'),
         default='')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user.username

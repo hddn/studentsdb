@@ -18,6 +18,7 @@ def paginate(objects, size, request, context, var_name='object_list'):
 
     return context
 
+
 def get_groups(request):
     """Returns list of existing groups"""
 
@@ -29,12 +30,11 @@ def get_groups(request):
         groups.append({
             'id': group.id,
             'title': group.title,
-            'leader': group.leader and (u'%s %s' % (group.leader.first_name,
-                group.leader.last_name)) or None,
-            'selected': cur_group and cur_group.id == group.id 
-                and True or False
+            'leader': group.leader and (u'%s %s' % (group.leader.first_name, group.leader.last_name)) or None,
+            'selected': cur_group and cur_group.id == group.id and True or False
             })
     return groups
+
 
 def get_current_group(request):
     """Returns currently selected group or None"""
