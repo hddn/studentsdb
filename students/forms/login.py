@@ -25,7 +25,7 @@ class LoginForm(AuthenticationForm):
 
         self.helper.layout = Layout(
             self.helper.layout, FormActions(
-                Submit('login_button', _(u'Login'), css_class="btn btn-primary"),
+                Submit('login_button', _('Login'), css_class="btn btn-primary"),
             ))
 
     class Meta:

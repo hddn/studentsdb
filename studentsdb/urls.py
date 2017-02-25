@@ -22,8 +22,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import RedirectView, TemplateView
 from django.views.i18n import JavaScriptCatalog
 
-from students.views.students import StudentUpdateView, StudentDeleteView, StudentAddView, students_list
-from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView, groups_list
+from students.views.students import StudentUpdateView, StudentDeleteView, StudentAddView, StudentsListView
+from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView, GroupsListView
 from students.views.exams import exams_list
 from students.views.journal import JournalView
 from students.views.contact_admin import ContactView
@@ -31,12 +31,12 @@ from students.forms.login import LoginForm
 
 
 urlpatterns = [
-    url(r'^$', students_list, name='home'),
+    url(r'^$', StudentsListView.as_view(), name='home'),
     url(r'^students/add/$', login_required(StudentAddView.as_view()), name='students_add'),
     url(r'^students/(?P<pk>\d+)/edit/$', login_required(StudentUpdateView.as_view()), name='students_edit'),
     url(r'^students/(?P<pk>\d+)/delete/$', login_required(StudentDeleteView.as_view()), name='students_delete'),
 
-    url(r'^groups/$', login_required(groups_list), name='groups'),
+    url(r'^groups/$', login_required(GroupsListView.as_view()), name='groups'),
     url(r'^groups/add/$', login_required(GroupAddView.as_view()), name='groups_add'),
     url(r'^groups/(?P<pk>\d+)/edit/$', login_required(GroupUpdateView.as_view()), name='groups_edit'),
     url(r'^groups/(?P<pk>\d+)/delete/$', login_required(GroupDeleteView.as_view()), name='groups_delete'),
