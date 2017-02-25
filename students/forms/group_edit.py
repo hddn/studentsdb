@@ -37,8 +37,8 @@ class GroupEditForm(ModelForm):
 
         self.helper.layout = Layout(
             self.helper.layout, FormActions(
-                Submit('add_button', _(u'Save'), css_class="btn btn-primary"),
-                Submit('cancel_button', _(u'Cancel'), css_class="btn btn-link"),
+                Submit('add_button', _('Save'), css_class="btn btn-primary"),
+                Submit('cancel_button', _('Cancel'), css_class="btn btn-link"),
             ))
 
     class Meta:

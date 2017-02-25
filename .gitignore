@@ -60,3 +60,6 @@ target/
 
 # Idea
 .idea/*
+
+email.py
+media/*

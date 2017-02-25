@@ -1,32 +1,33 @@
-
-from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
-from django.views.generic import UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 from ..models import Group
 from ..forms import GroupEditForm
-from ..util import paginate, get_current_group
+from ..util import get_current_group
 # Create your views here.
+GROUPS_NUM = 5
 
 
-def groups_list(request):
-    current_group = get_current_group(request)
-    if current_group:
-        groups = Group.objects.filter(title=current_group.title)
-    else:
-        groups = Group.objects.all()
+class GroupsListView(ListView):
+    template_name = 'students/groups.html'
+    model = Group
+    paginate_by = GROUPS_NUM
+    context_object_name = 'groups'
 
-    order_by = request.GET.get('order_by', '')
-    if order_by in ('title', 'leader'):
-        groups = groups.order_by(order_by)
-        if request.GET.get('reverse', '') == '1':
-            groups = groups.reverse()
-
-    context = paginate(groups, 3, request, {}, var_name='groups')
-    
-    return render(request, 'students/groups.html', context)
+    def get_queryset(self):
+        current_group = get_current_group(self.request)
+        if current_group:
+            queryset = Group.objects.filter(student_group=current_group)
+        else:
+            queryset = Group.objects.all()
+        order_by = self.request.GET.get('order_by', '')
+        if order_by in ('title', 'leader'):
+            queryset = queryset.order_by(order_by)
+            if self.request.GET.get('reverse', '') == '1':
+                queryset = queryset.reverse()
+        return queryset
 
 
 class GroupUpdateView(UpdateView):
