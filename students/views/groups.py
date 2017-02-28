@@ -6,8 +6,8 @@ from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from ..models import Group
 from ..forms import GroupEditForm
 from ..util import get_current_group
-# Create your views here.
-GROUPS_NUM = 5
+
+GROUPS_NUM = 5  # number of groups for pagination
 
 
 class GroupsListView(ListView):

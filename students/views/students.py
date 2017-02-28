@@ -7,8 +7,7 @@ from ..models import Student
 from ..forms import StudentEditForm
 from ..util import get_current_group
 
-# Create your views here.
-STUDENTS_NUM = 5
+STUDENTS_NUM = 5  # number of students for pagination
 
 
 class StudentUpdateView(UpdateView):

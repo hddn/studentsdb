@@ -24,7 +24,7 @@ from django.views.i18n import JavaScriptCatalog
 
 from students.views.students import StudentUpdateView, StudentDeleteView, StudentAddView, StudentsListView
 from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView, GroupsListView
-from students.views.exams import exams_list
+from students.views.exams import ExamsListView
 from students.views.journal import JournalView
 from students.views.contact_admin import ContactView
 from students.forms.login import LoginForm
@@ -45,7 +45,7 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^exams/$', login_required(exams_list), name='exams'),
+    url(r'^exams/$', login_required(ExamsListView.as_view()), name='exams'),
 
     url(r'^contact-admin/$', login_required(ContactView.as_view()), name='contact_admin'),
 
