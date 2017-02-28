@@ -1,28 +1,23 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
 
 from ..models.exam import Exam
-# Create your views here.
+
+EXAMS_NUM = 5  # number of exams for pagination
 
 
-def exams_list(request):
-    exams = Exam.objects.all()
+class ExamsListView(ListView):
+    template_name = 'students/exams.html'
+    model = Exam
+    paginate_by = EXAMS_NUM
+    context_object_name = 'exams'
 
-    order_by = request.GET.get('order_by', '')
-    if order_by in ('subject', 'teacher', 'group', 'date'):
-        exams = exams.order_by(order_by)
-        if request.GET.get('reverse', '') == '1':
-            exams = exams.reverse()
-
-    paginator = Paginator(exams, 3)
-    page = request.GET.get('page')
-    try:
-        exams = paginator.page(page)
-    except PageNotAnInteger:
-        exams = paginator.page(1)
-    except EmptyPage:
-        exams = paginator.page(paginator.num_pages)
-    
-    return render(request, 'students/exams.html', {'exams': exams})
+    def get_queryset(self):
+        queryset = Exam.objects.all()
+        order_by = self.request.GET.get('order_by', '')
+        if order_by in ('subject', 'teacher', 'group', 'date'):
+            queryset = queryset.order_by(order_by)
+            if self.request.GET.get('reverse', '') == '1':
+                queryset = queryset.reverse()
+        return queryset
