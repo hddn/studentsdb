@@ -31,7 +31,7 @@ class StudentAddView(CreateView):
     form_class = StudentEditForm
 
     def get_success_url(self):
-        return '%s?status_message=%s' % (reverse('home'), _(u'Student added successfully!'))
+        return '%s?status_message=%s' % (reverse('home'), _('Student added successfully!'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
@@ -45,7 +45,7 @@ class StudentDeleteView(DeleteView):
     template_name = 'students/students_confirm_delete.html'
 
     def get_success_url(self):
-        return '%s?status_message=%s' % (reverse('home'), _(u'Student deleted'))
+        return '%s?status_message=%s' % (reverse('home'), _('Student deleted'))
 
 
 class StudentsListView(ListView):

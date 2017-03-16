@@ -10,44 +10,44 @@ class Student(models.Model):
     first_name = models.CharField(
         max_length=256,
         blank=False,
-        verbose_name=_(u'First Name'))
+        verbose_name=_('First Name'))
 
     last_name = models.CharField(
         max_length=256,
         blank=False,
-        verbose_name=_(u'Last Name'))
+        verbose_name=_('Last Name'))
 
     middle_name = models.CharField(
         max_length=256,
         blank=True,
-        verbose_name=_(u'Middle Name'),
+        verbose_name=_('Middle Name'),
         default='')
 
     birthday = models.DateField(
         blank=False,
-        verbose_name=_(u'Birthday'),
+        verbose_name=_('Birthday'),
         null=True)
 
     photo = models.ImageField(
         blank=True,
-        verbose_name=_(u'Photo'),
+        verbose_name=_('Photo'),
         null=True)
 
     ticket = models.CharField(
         max_length=256,
         blank=False,
-        verbose_name=_(u'Ticket'))
+        verbose_name=_('Ticket'))
 
     notes = models.TextField(
         blank=True,
-        verbose_name=_(u'Notes'))
+        verbose_name=_('Notes'))
 
     student_group = models.ForeignKey(
         'Group',
-        verbose_name=_(u'Group'),
+        verbose_name=_('Group'),
         blank=False,
         null=True,
         on_delete=models.PROTECT)
 
     def __str__(self):
-        return u'%s %s' % (self.first_name, self.last_name)
+        return '%s %s' % (self.first_name, self.last_name)

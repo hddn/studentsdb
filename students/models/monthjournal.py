@@ -7,12 +7,12 @@ class MonthJournal(models.Model):
 
     student = models.ForeignKey(
         'Student',
-        verbose_name=_(u'Student'),
+        verbose_name=_('Student'),
         blank=False,
         unique_for_month='date')
 
     date = models.DateField(
-        verbose_name=_(u'Date'),
+        verbose_name=_('Date'),
         blank=False)
 
     present_day1 = models.BooleanField(default=False)
