@@ -14,7 +14,7 @@ class MonthJournal(models.Model):
     date = models.DateField(
         verbose_name=_('Date'),
         blank=False)
-
+    # TODO: refactor this shit
     present_day1 = models.BooleanField(default=False)
     present_day2 = models.BooleanField(default=False)
     present_day3 = models.BooleanField(default=False)
