@@ -2,6 +2,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def paginate(objects, size, request, context, var_name='object_list'):
+    """Paginate objects list and return updated context"""
     paginator = Paginator(objects, size)
     page = request.GET.get('page', '1')
     try:
@@ -20,8 +21,7 @@ def paginate(objects, size, request, context, var_name='object_list'):
 
 
 def get_groups(request):
-    """Returns list of existing groups"""
-
+    """Return list of existing groups"""
     from .models import Group
     cur_group = get_current_group(request)
 
@@ -37,8 +37,7 @@ def get_groups(request):
 
 
 def get_current_group(request):
-    """Returns currently selected group or None"""
-
+    """Return currently selected group or None"""
     pk = request.COOKIES.get('current_group')
     if pk:
         from .models import Group

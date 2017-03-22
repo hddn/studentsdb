@@ -4,7 +4,7 @@ from django.utils.translation import ugettext as _
 
 
 class UserProfile(models.Model):
-    """Keeps user extra data"""
+    """Keep user extra data"""
 
     user = models.OneToOneField(User)
 
