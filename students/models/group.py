@@ -24,6 +24,6 @@ class Group(models.Model):
 
     def __str__(self):
         if self.leader:
-            return '%s (%s %s)' % (self.title, self.leader.first_name, self.leader.last_name)
+            return '{} ({} {})'.format(self.title, self.leader.first_name, self.leader.last_name)
         else:
-            return '%s' % self.title
+            return '{}'.format(self.title)

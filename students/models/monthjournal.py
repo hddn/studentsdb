@@ -48,4 +48,4 @@ class MonthJournal(models.Model):
     present_day31 = models.BooleanField(default=False)
 
     def __str__(self):
-        return u'%s: %d, %d' % (self.student.last_name, self.date.month, self.date.year)
+        return '{}: {:d}, {:d}'.format(self.student.last_name, self.date.month, self.date.year)

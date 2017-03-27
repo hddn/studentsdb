@@ -58,11 +58,11 @@ class JournalView(TemplateView):
             for day in range(1, number_of_days + 1):
                 days.append({
                     'day': day,
-                    'present': journal and getattr(journal, 'present_day%d' % day, False) or False,
+                    'present': journal and getattr(journal, 'present_day{:d}'.format(day), False) or False,
                     'date': date(myear, mmonth, day).strftime('%Y-%m-%d')
                     })
             students.append({
-                'fullname': u'%s %s' % (student.last_name, student.first_name),
+                'fullname': '{} {}'.format(student.last_name, student.first_name),
                 'days': days,
                 'id': student.id,
                 'update_url': update_url
@@ -80,7 +80,7 @@ class JournalView(TemplateView):
         present = data['present'] and True or False
         student = Student.objects.get(pk=data['pk'])
         journal = MonthJournal.objects.get_or_create(student=student, date=month)[0]
-        setattr(journal, 'present_day%d' % current_date.day, present)
+        setattr(journal, 'present_day{:d}'.format(current_date.day), present)
         journal.save()
 
         return JsonResponse({'status': 'success'})

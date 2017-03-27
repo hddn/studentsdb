@@ -29,7 +29,7 @@ from students.views.journal import JournalView
 from students.views.contact_admin import ContactView
 from students.forms.login import LoginForm
 
-
+# TODO: use namespaces
 urlpatterns = [
     url(r'^$', StudentsListView.as_view(), name='home'),
     url(r'^students/add/$', login_required(StudentAddView.as_view()), name='students_add'),

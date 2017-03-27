@@ -33,6 +33,6 @@ class Exam(models.Model):
 
     def __str__(self):
         if self.group:
-            return '%s, %s (%s)' % (self.group, self.subject, self.date)
+            return '{}, {} ({})'.format(self.group, self.subject, self.date)
         else:
-            return '%s (%s)' % (self.group, self.date)
+            return '{} ({})'.format(self.group, self.date)

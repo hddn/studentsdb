@@ -36,11 +36,11 @@ class GroupUpdateView(UpdateView):
     form_class = GroupEditForm
 
     def get_success_url(self):
-        return '%s?status_message=%s' % (reverse('home'), _('Group saved'))
+        return '{}?status_message={}'.format(reverse('home'), _('Group saved'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect('%s?status_message=%s' % (reverse('home'), _('Canceled')))
+            return HttpResponseRedirect('{}?status_message={}'.format(reverse('home'), _('Canceled')))
         else:
             return super(GroupUpdateView, self).post(request, *args, **kwargs)
 
@@ -51,11 +51,11 @@ class GroupAddView(CreateView):
     form_class = GroupEditForm
 
     def get_success_url(self):
-        return '%s?status_message=%s' % (reverse('home'), _('Group added'))
+        return '{}?status_message={}'.format(reverse('home'), _('Group added'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect('%s?status_message=%s' % (reverse('home'), _('Canceled')))
+            return HttpResponseRedirect('{}?status_message={}'.format(reverse('home'), _('Canceled')))
         else:
             return super(GroupAddView, self).post(request, *args, **kwargs)
 
@@ -65,4 +65,4 @@ class GroupDeleteView(DeleteView):
     template_name = 'students/groups_confirm_delete.html'
     
     def get_success_url(self):
-        return '%s?status_message=%s' % (reverse('home'), _('Group deleted'))
+        return '{}?status_message={}'.format(reverse('home'), _('Group deleted'))
