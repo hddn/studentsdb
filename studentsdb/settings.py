@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from .email import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,9 +25,9 @@ SECRET_KEY = '7&gv!5x1x39z@u5y*7@6kykg6f#l9+qjb@+1&#++d37#=a%d8y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-PORTAL_URL = 'http://localhost:8000'
+PORTAL_URL = 'http://192.168.11.76:8000'
 
 # Application definition
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = (
     'students',
     'studentsdb',
 )
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = (
@@ -80,6 +80,9 @@ TEMPLATES = [
     },
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ADMIN_EMAIL = 'admin@admin.com'
 
 WSGI_APPLICATION = 'studentsdb.wsgi.application'
 
@@ -99,6 +102,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = ''
 SOCIAL_AUTH_FACEBOOK_SECRET = ''
 
 LOGIN_REDIRECT_URL = PORTAL_URL
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
