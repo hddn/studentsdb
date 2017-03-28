@@ -19,7 +19,7 @@ class GroupsListView(ListView):
     def get_queryset(self):
         current_group = get_current_group(self.request)
         if current_group:
-            queryset = Group.objects.filter(student_group=current_group)
+            queryset = Group.objects.filter(title=current_group.title)
         else:
             queryset = Group.objects.all()
         order_by = self.request.GET.get('order_by', '')
@@ -36,11 +36,11 @@ class GroupUpdateView(UpdateView):
     form_class = GroupEditForm
 
     def get_success_url(self):
-        return '%s?status_message=%s' % (reverse('home'), _('Group saved'))
+        return '{}?status_message={}'.format(reverse('groups'), _('Group saved'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect('%s?status_message=%s' % (reverse('home'), _('Canceled')))
+            return HttpResponseRedirect('{}?status_message={}'.format(reverse('groups'), _('Canceled')))
         else:
             return super(GroupUpdateView, self).post(request, *args, **kwargs)
 
@@ -51,11 +51,11 @@ class GroupAddView(CreateView):
     form_class = GroupEditForm
 
     def get_success_url(self):
-        return '%s?status_message=%s' % (reverse('home'), _('Group added'))
+        return '{}?status_message={}'.format(reverse('groups'), _('Group added'))
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect('%s?status_message=%s' % (reverse('home'), _('Canceled')))
+            return HttpResponseRedirect('{}?status_message={}'.format(reverse('groups'), _('Canceled')))
         else:
             return super(GroupAddView, self).post(request, *args, **kwargs)
 
@@ -65,4 +65,4 @@ class GroupDeleteView(DeleteView):
     template_name = 'students/groups_confirm_delete.html'
     
     def get_success_url(self):
-        return '%s?status_message=%s' % (reverse('home'), _('Group deleted'))
+        return '{}?status_message={}'.format(reverse('groups'), _('Group deleted'))

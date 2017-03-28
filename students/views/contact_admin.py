@@ -63,4 +63,4 @@ class ContactView(FormView):
         else:
             message = _('Message send successfully')
 
-        return HttpResponseRedirect('%s?status_message=%s' % (reverse('contact_admin'), message))
+        return HttpResponseRedirect('{}?status_message={}'.format(reverse('contact_admin'), message))

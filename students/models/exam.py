@@ -9,30 +9,30 @@ class Exam(models.Model):
     subject = models.CharField(
         max_length=256,
         blank=False,
-        verbose_name=_(u'Title'))
+        verbose_name=_('Title'))
 
     teacher = models.CharField(
         max_length=256,
         blank=True,
-        verbose_name=_(u'Teacher'))
+        verbose_name=_('Teacher'))
 
     date = models.DateTimeField(
         blank=False,
-        verbose_name=_(u'Date'))
+        verbose_name=_('Date'))
 
     group = models.OneToOneField(
         'Group',
         blank=True,
         null=True,
-        verbose_name=_(u'Group'),
+        verbose_name=_('Group'),
         on_delete=models.SET_NULL)
     
     notes = models.TextField(
         blank=True,
-        verbose_name=_(u'Notes'))
+        verbose_name=_('Notes'))
 
     def __str__(self):
         if self.group:
-            return u'%s, %s (%s)' % (self.group, self.subject, self.date)
+            return '{}, {} ({})'.format(self.group.title, self.subject, self.date)
         else:
-            return u'%s (%s)' % (self.group, self.date)
+            return '{} ({})'.format(self.subject, self.date)

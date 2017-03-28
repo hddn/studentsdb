@@ -16,8 +16,7 @@ class RequestTimeMiddleware(object):
 
         request.end_time = datetime.now()
         if 'text/html' in response.get('Content-Type', ''):
-            response.write('<br>Request took: %s' % str(
-                request.end_time - request.start_time))
+            response.write('<br>Request took: {}'.format(str(request.end_time - request.start_time)))
         return response
 
     def process_view(self, request, view, args, kwargs):
@@ -27,4 +26,4 @@ class RequestTimeMiddleware(object):
         return response
 
     def process_exception(self, request, exception):
-        return HttpResponse('Exception found: %s' % exception)
+        return HttpResponse('Exception found: {}'.format(exception))

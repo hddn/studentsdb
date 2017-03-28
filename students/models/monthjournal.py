@@ -7,14 +7,14 @@ class MonthJournal(models.Model):
 
     student = models.ForeignKey(
         'Student',
-        verbose_name=_(u'Student'),
+        verbose_name=_('Student'),
         blank=False,
         unique_for_month='date')
 
     date = models.DateField(
-        verbose_name=_(u'Date'),
+        verbose_name=_('Date'),
         blank=False)
-
+    # TODO: refactor this shit
     present_day1 = models.BooleanField(default=False)
     present_day2 = models.BooleanField(default=False)
     present_day3 = models.BooleanField(default=False)
@@ -48,4 +48,4 @@ class MonthJournal(models.Model):
     present_day31 = models.BooleanField(default=False)
 
     def __str__(self):
-        return u'%s: %d, %d' % (self.student.last_name, self.date.month, self.date.year)
+        return '{}: {:d}, {:d}'.format(self.student.last_name, self.date.month, self.date.year)

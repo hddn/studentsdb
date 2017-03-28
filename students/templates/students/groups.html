@@ -43,8 +43,12 @@
                 <td>{{ group.id }}</td>
                 <td><a title="{% trans "Edit" %}" href="{% url "groups_edit" group.id %}" class="student-edit-form-link">
                     {{ group.title }}</a></td>
-                <td><a title="{% trans "Edit" %}" href="{% url "students_edit" group.leader.id %}" class="student-edit-form-link">
+                {% if group.leader %}
+                    <td><a title="{% trans "Edit" %}" href="{% url "students_edit" group.leader.id %}" class="student-edit-form-link">
                     {{ group.leader.first_name }} {{ group.leader.last_name }}</a></td>
+                {% else %}
+                    <td>Leader is not assigned</td>
+                {% endif %}
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
