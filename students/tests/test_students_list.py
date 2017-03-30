@@ -60,7 +60,7 @@ class TestStudentsList(TestCase):
         self.assertEqual(students[2].last_name, 'Carter')
 
     def test_current_group(self):
-        group = Group.objects.get(id=2)
+        group = Group.objects.get(pk=2)
         self.client.cookies['current_group'] = group.id
         response = self.client.get(self.url)
         self.assertEqual(len(response.context['students']), 1)

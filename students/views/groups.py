@@ -7,7 +7,7 @@ from ..models import Group
 from ..forms import GroupEditForm
 from ..util import get_current_group
 
-GROUPS_NUM = 5  # number of groups for pagination
+GROUPS_NUM = 3  # number of groups for pagination
 
 
 class GroupsListView(ListView):

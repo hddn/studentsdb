@@ -20,7 +20,7 @@ class ContactAdminTest(TestCase):
             'message': 'test message'
         })
 
-        # check if email backend catched our message
+        # check if email backend caught our message
         msg = mail.outbox[0].message()
         self.assertEqual(msg.get('subject'), 'test email')
         self.assertEqual(msg.get('From'), 'test@test.com')
