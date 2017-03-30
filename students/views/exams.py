@@ -2,9 +2,10 @@
 
 from django.views.generic import ListView
 
-from ..models.exam import Exam
+from students.models import Exam
+from students.util import get_current_group
 
-EXAMS_NUM = 5  # number of exams for pagination
+EXAMS_NUM = 3  # number of exams for pagination
 
 
 class ExamsListView(ListView):
@@ -14,7 +15,11 @@ class ExamsListView(ListView):
     context_object_name = 'exams'
 
     def get_queryset(self):
-        queryset = Exam.objects.all()
+        current_group = get_current_group(self.request)
+        if current_group:
+            queryset = Exam.objects.filter(group=current_group)
+        else:
+            queryset = Exam.objects.all()
         order_by = self.request.GET.get('order_by', '')
         if order_by in ('subject', 'teacher', 'group', 'date'):
             queryset = queryset.order_by(order_by)
