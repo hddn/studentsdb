@@ -39,7 +39,7 @@ class TestStudentsList(TestCase):
         self.assertIn(reverse('students_edit', kwargs={'pk': Student.objects.all()[0].id}).encode(), response.content)
 
         # check for pagination
-        self.assertEqual(len(response.context), 3)
+        self.assertEqual(len(response.context['students']), 3)
         response = self.client.get(self.url, {'page': '2'})
         self.assertEqual(len(response.context['students']), 1)
 
@@ -60,7 +60,7 @@ class TestStudentsList(TestCase):
         self.assertEqual(students[2].last_name, 'Carter')
 
     def test_current_group(self):
-        group = Group.objects.get(id=2)
+        group = Group.objects.get(pk=2)
         self.client.cookies['current_group'] = group.id
         response = self.client.get(self.url)
         self.assertEqual(len(response.context['students']), 1)
