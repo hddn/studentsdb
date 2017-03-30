@@ -36,7 +36,7 @@ class TestGroupsList(TestCase):
         self.assertIn(reverse('groups_edit', kwargs={'pk': Group.objects.all()[0].id}).encode(), response.content)
 
         # check for pagination
-        self.assertEqual(len(response.context), 3)
+        self.assertEqual(len(response.context['groups']), 3)
         response = self.client.get(self.url, {'page': '2'})
         self.assertEqual(len(response.context['groups']), 1)
 
