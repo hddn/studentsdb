@@ -60,8 +60,8 @@ class StudentsListView(ListView):
             queryset = Student.objects.filter(student_group=current_group)
         else:
             queryset = Student.objects.all()
-        order_by = self.request.GET.get('order_by', '')
-        if order_by in ('last_name', 'first_name', 'ticket'):
+        order_by = self.request.GET.get('order_by', 'id')
+        if order_by in ('id', 'last_name', 'first_name', 'ticket'):
             queryset = queryset.order_by(order_by)
             if self.request.GET.get('reverse', '') == '1':
                 queryset = queryset.reverse()

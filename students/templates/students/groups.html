@@ -57,7 +57,7 @@
                     </button>
                     <ul class="dropdown-menu" role="menu">
                       <li role="presentation">
-                        <a role="menuitem" tabindex="-1" class="group-edit-form-link" href="{% url "groups_edit" group.id %}">{% trans "Edit" %}</a>                        
+                        <a role="menuitem" tabindex="-1" class="group-edit-form-link" href="{% url "groups_edit" group.id %}">{% trans "Edit" %}</a>
                       </li>
                       <li role="presentation">
                         <a role="menuitem" tabindex="-1" href="{% url "groups_delete" group.id %}">{% trans "Delete" %}</a>
@@ -71,7 +71,7 @@
             </tbody>
           </table>
           {% endwith %}
-        </div>        
+        </div>
       </div>
 {% with object_list=groups %}
   {% include "students/pagination.html" %}
