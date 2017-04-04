@@ -1,51 +1,52 @@
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
-from ..models import Student
-from ..forms import StudentEditForm
-from ..util import get_current_group
+from braces.views import FormValidMessageMixin
+
+from students.models import Student
+from students.forms import StudentEditForm
+from students.util import get_current_group
 
 STUDENTS_NUM = 3  # number of students for pagination
 
 
-class StudentUpdateView(UpdateView):
+class StudentUpdateView(FormValidMessageMixin, UpdateView):
     model = Student
     template_name = 'students/students_edit.html'
     form_class = StudentEditForm
-    
-    def get_success_url(self):
-        return '{}?status_message={}'.format(reverse('home'), _('Student updated successfully!'))
+    success_url = reverse_lazy('home')
+    form_valid_message = _('Student updated successfully!')
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect('{}?status_message={}'.format(reverse('home'), _('Student updating canceled')))
+            return HttpResponseRedirect(reverse('home'))
         else:
             return super(StudentUpdateView, self).post(request, *args, **kwargs)
 
 
-class StudentAddView(CreateView):
+class StudentAddView(FormValidMessageMixin, CreateView):
     model = Student
     template_name = 'students/students_add.html'
     form_class = StudentEditForm
-
-    def get_success_url(self):
-        return '{}?status_message={}'.format(reverse('home'), _('Student added successfully!'))
+    success_url = reverse_lazy('home')
+    form_valid_message = _('Student added successfully!')
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect('{}?status_message={}'.format(reverse('home'), _('Student adding canceled')))
+            return HttpResponseRedirect(reverse('home'))
         else:
             return super(StudentAddView, self).post(request, *args, **kwargs)
 
 
-class StudentDeleteView(DeleteView):
+class StudentDeleteView(FormValidMessageMixin, DeleteView):
     model = Student
     template_name = 'students/students_confirm_delete.html'
+    success_url = reverse_lazy('home')
 
-    def get_success_url(self):
-        return '{}?status_message={}'.format(reverse('home'), _('Student deleted'))
+    def get_form_valid_message(self):
+        return 'Student {} {} deleted!'.format(self.object.first_name, self.object.last_name)
 
 
 class StudentsListView(ListView):

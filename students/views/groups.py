@@ -1,7 +1,9 @@
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+
+from braces.views import FormValidMessageMixin
 
 from ..models import Group
 from ..forms import GroupEditForm
@@ -30,39 +32,38 @@ class GroupsListView(ListView):
         return queryset
 
 
-class GroupUpdateView(UpdateView):
+class GroupUpdateView(FormValidMessageMixin, UpdateView):
     model = Group
     template_name = 'students/groups_edit.html'
     form_class = GroupEditForm
-
-    def get_success_url(self):
-        return '{}?status_message={}'.format(reverse('groups'), _('Group saved'))
+    success_url = reverse_lazy('groups')
+    form_valid_message = _('Group update successful!')
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect('{}?status_message={}'.format(reverse('groups'), _('Canceled')))
+            return HttpResponseRedirect(reverse('groups'))
         else:
             return super(GroupUpdateView, self).post(request, *args, **kwargs)
 
 
-class GroupAddView(CreateView):
+class GroupAddView(FormValidMessageMixin, CreateView):
     model = Group
     template_name = 'students/groups_add.html'
     form_class = GroupEditForm
-
-    def get_success_url(self):
-        return '{}?status_message={}'.format(reverse('groups'), _('Group added'))
+    success_url = reverse_lazy('groups')
+    form_valid_message = _('New group was added')
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('cancel_button'):
-            return HttpResponseRedirect('{}?status_message={}'.format(reverse('groups'), _('Canceled')))
+            return HttpResponseRedirect(reverse('groups'))
         else:
             return super(GroupAddView, self).post(request, *args, **kwargs)
 
 
-class GroupDeleteView(DeleteView):
+class GroupDeleteView(FormValidMessageMixin, DeleteView):
     model = Group
     template_name = 'students/groups_confirm_delete.html'
-    
-    def get_success_url(self):
-        return '{}?status_message={}'.format(reverse('groups'), _('Group deleted'))
+    success_url = reverse_lazy('groups')
+
+    def get_form_valid_message(self):
+        return 'Group {} deleted!'.format(self.object.title)
