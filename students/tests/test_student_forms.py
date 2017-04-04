@@ -12,7 +12,6 @@ class TestStudentUpdateForm(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # TODO: use mocks
         group1 = Group.objects.create(id=1, title='Group1')
         group2 = Group.objects.create(id=2, title='Group2')
 
@@ -25,6 +24,7 @@ class TestStudentUpdateForm(TestCase):
     def setUp(self):
         self.client = Client()
         self.url = reverse('students_edit', kwargs={'pk': 1})
+        self.home_url = reverse('home')
 
     def test_form(self):
         # login as admin
@@ -41,8 +41,7 @@ class TestStudentUpdateForm(TestCase):
 
         # test cancel button
         response = self.client.post(self.url, {'cancel_button': 'Cancel'}, follow=True)
-        self.assertIn(b'Student updating canceled', response.content)
-        self.assertEqual(response.redirect_chain[0][0], '/?status_message=Student%20updating%20canceled')
+        self.assertEqual(response.redirect_chain[0][0], self.home_url)
 
     def test_update_success(self):
         self.client.login(username='admin', password='test12345')
@@ -67,7 +66,7 @@ class TestStudentUpdateForm(TestCase):
 
         # check for proper redirect
         self.assertIn(b'Student updated successfully', response.content)
-        self.assertEqual(response.redirect_chain[0][0], '/?status_message=Student%20updated%20successfully!')
+        self.assertEqual(response.redirect_chain[0][0], self.home_url)
 
     def test_access(self):
         # try to access form as anonymous user

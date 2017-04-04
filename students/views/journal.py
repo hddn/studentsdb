@@ -69,7 +69,7 @@ class JournalView(TemplateView):
                 })
 
         context = paginate(
-            students, 10, self.request, context, var_name='students')
+            students, 3, self.request, context, var_name='students')
 
         return context
 

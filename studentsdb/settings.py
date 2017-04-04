@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-PORTAL_URL = 'http://192.168.11.76:8000'
+PORTAL_URL = 'http://192.168.11.128:8000'
 
 # Application definition
 
@@ -174,7 +174,7 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['null'],
+            'handlers': ['console'],
             'propagate': True,
             'level': 'INFO',
         },
