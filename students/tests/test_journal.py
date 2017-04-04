@@ -12,7 +12,6 @@ class TestJournal(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # TODO: use mocks
         group = Group.objects.create(id=1, title='Group1')
         Student.objects.create(id=1, first_name='Michael', last_name='Jordan',
                                birthday=datetime.now(), ticket='23', student_group=group)

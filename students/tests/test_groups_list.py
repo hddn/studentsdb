@@ -10,7 +10,6 @@ class TestGroupsList(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # TODO: use mocks
         Group.objects.create(id=1, title='Group4')
         Group.objects.create(id=2, title='Group2')
         Group.objects.create(id=3, title='Group1')

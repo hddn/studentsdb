@@ -11,7 +11,6 @@ class TestExamsList(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # TODO: use mocks
         group = Group.objects.create(id=1, title='Group4')
         Exam.objects.create(id=1, subject='Exam1', date=timezone.now(), group=group)
         Exam.objects.create(id=2, subject='Exam2', date=timezone.now())

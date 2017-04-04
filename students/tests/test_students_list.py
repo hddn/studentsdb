@@ -11,7 +11,6 @@ class TestStudentsList(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # TODO: use mocks
         group1 = Group.objects.create(id=1, title='Group1')
         group2 = Group.objects.create(id=2, title='Group2')
 

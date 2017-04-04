@@ -12,7 +12,6 @@ class UtilsTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # TODO: use mocks
         group = Group.objects.create(id=1, title='Group1')
         group2 = Group.objects.create(id=2, title='Group2')
         student = Student.objects.create(id=1, first_name='Michael', last_name='Jordan',
