@@ -3,7 +3,7 @@
 
 
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 
   <head>
     <meta charset="UTF-8"/>
@@ -25,7 +25,7 @@
         </div>
 
         {% if user.is_authenticated %}
-        <div class="col-xs-4" id="group-selector">
+        <div class="col-xs-3" id="group-selector">
           <strong>{% trans "Group:" %}</strong>
             <select>
               <option value="">{% trans "All Students" %}</option>
@@ -40,11 +40,18 @@
         
         {% else %}
 
-        <div class="col-xs-6" id="user-toolbar">
+        <div class="col-xs-5" id="user-toolbar">
           <a href="{% url "social:begin" "facebook" %}?next={{ request.path }}">{% trans "via Facebook" %}</a> |
           <a href="{% url "users:auth_login" %}">{% trans "Login" %}</a> | <a href="{% url "users:registration_register" %}">{% trans "Register" %}</a>
         </div>
         {% endif %}
+
+        <div class="col-xs-1" id="lang-selector">
+            <select name="">
+                <option value="en" {% if "en" == LANGUAGE_CODE %}selected="selected"{% endif %}>EN</option>
+                <option value="uk" {% if "uk" == LANGUAGE_CODE %}selected="selected"{% endif %}>UK</option>
+            </select>
+        </div>
       </div>
 
       <div class="row" id="sub-header">
