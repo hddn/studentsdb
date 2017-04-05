@@ -21,4 +21,4 @@ msgstr ""
 
 #: static/js/main.js:61 static/js/main.js:78 static/js/main.js:95
 msgid "There was some error on the server. Please, try again later"
-msgstr ""
+msgstr "Сталася помилка на сервері. Спробуйте пізніше"
