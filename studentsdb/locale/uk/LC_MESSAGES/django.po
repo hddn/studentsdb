@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-05 15:20+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: studentsdb/models.py:12
+msgid "User Profile"
+msgstr "Профіль Користувача"
+
+#: studentsdb/models.py:17 studentsdb/templates/registration/profile.html:35
+msgid "Mobile Phone"
+msgstr "Мобільний телефон"
+
+#: studentsdb/templates/registration/login.html:5
+#: studentsdb/templates/registration/login.html:7
+msgid "Login Form"
+msgstr "Увійти"
+
+#: studentsdb/templates/registration/login.html:14
+msgid "Correct errors"
+msgstr "Виправте помилки"
+
+#: studentsdb/templates/registration/profile.html:14
+msgid "Email"
+msgstr "Email"
+
+#: studentsdb/templates/registration/profile.html:21
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: studentsdb/templates/registration/profile.html:28
+msgid "Joined"
+msgstr "Зареєстрований"
+
+#: studentsdb/templates/registration/registration_form.html:5
+#: studentsdb/templates/registration/registration_form.html:7
+msgid "Register Form"
+msgstr "Реєстрація"
+
+#: studentsdb/templates/registration/registration_form.html:11
+msgid "Please, correct the errors"
+msgstr "Виправте помилки, будь ласка"
+
+#: studentsdb/templates/registration/registration_form.html:24
+msgid "Username*"
+msgstr "Ім'я користувача*"
+
+#: studentsdb/templates/registration/registration_form.html:30
+msgid "Email*"
+msgstr "Email*"
+
+#: studentsdb/templates/registration/registration_form.html:36
+msgid "Password*"
+msgstr "Пароль*"
+
+#: studentsdb/templates/registration/registration_form.html:42
+msgid "Confirm Password*"
+msgstr "Підтвердження паролю*"
+
+#: studentsdb/templates/registration/registration_form.html:47
+msgid "Register"
+msgstr "Зареєструватися"
