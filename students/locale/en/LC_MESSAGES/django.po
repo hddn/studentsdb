@@ -1,0 +1,303 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-05 11:48+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms/group_edit.py:40 forms/student_edit.py:45
+msgid "Save"
+msgstr ""
+
+#: forms/group_edit.py:41 forms/student_edit.py:46
+msgid "Cancel"
+msgstr ""
+
+#: forms/login.py:28 templates/students/base.html:45
+msgid "Login"
+msgstr ""
+
+#: models/exam.py:12 models/group.py:12 templates/students/exams.html:23
+#: templates/students/groups.html:25
+msgid "Title"
+msgstr ""
+
+#: models/exam.py:17 templates/students/exams.html:29
+msgid "Teacher"
+msgstr ""
+
+#: models/exam.py:21 models/monthjournal.py:15
+#: templates/students/exams.html:41
+msgid "Date"
+msgstr ""
+
+#: models/exam.py:27 models/student.py:47 templates/students/exams.html:35
+msgid "Group"
+msgstr ""
+
+#: models/exam.py:32 models/group.py:23 models/student.py:43
+msgid "Notes"
+msgstr ""
+
+#: models/group.py:18 templates/students/groups.html:31
+msgid "Leader"
+msgstr ""
+
+#: models/monthjournal.py:10 templates/students/journal.html:37
+msgid "Student"
+msgstr ""
+
+#: models/student.py:13 templates/students/students_list.html:35
+msgid "First Name"
+msgstr ""
+
+#: models/student.py:18 templates/students/students_list.html:29
+msgid "Last Name"
+msgstr ""
+
+#: models/student.py:23
+msgid "Middle Name"
+msgstr ""
+
+#: models/student.py:28
+msgid "Birthday"
+msgstr ""
+
+#: models/student.py:33 templates/students/students_list.html:28
+msgid "Photo"
+msgstr ""
+
+#: models/student.py:39
+msgid "Ticket"
+msgstr ""
+
+#: templates/contact_admin/form.html:9 templates/contact_admin/form.html:11
+msgid "Contact Admin"
+msgstr ""
+
+#: templates/contact_admin/form.html:17
+msgid "Fix errors"
+msgstr ""
+
+#: templates/students/base.html:10 templates/students/base.html:24
+#: templates/students/base.html:96
+msgid "Students Accounting Service"
+msgstr ""
+
+#: templates/students/base.html:11
+msgid "App to manage students database"
+msgstr ""
+
+#: templates/students/base.html:29
+msgid "Group:"
+msgstr ""
+
+#: templates/students/base.html:31
+msgid "All Students"
+msgstr ""
+
+#: templates/students/base.html:38
+msgid "Logout"
+msgstr ""
+
+#: templates/students/base.html:44
+msgid "via Facebook"
+msgstr ""
+
+#: templates/students/base.html:45
+msgid "Register"
+msgstr ""
+
+#: templates/students/base.html:54 templates/students/students_list.html:7
+msgid "Students"
+msgstr ""
+
+#: templates/students/base.html:58 templates/students/students_list.html:72
+msgid "Journal"
+msgstr ""
+
+#: templates/students/base.html:60 templates/students/groups.html:7
+#: templates/students/groups.html:9
+msgid "Groups"
+msgstr ""
+
+#: templates/students/base.html:62 templates/students/exams.html:7
+#: templates/students/exams.html:9
+msgid "Exams"
+msgstr ""
+
+#: templates/students/base.html:64
+msgid "Contact"
+msgstr ""
+
+#: templates/students/exams.html:55 templates/students/groups.html:44
+#: templates/students/groups.html:47 templates/students/groups.html:60
+#: templates/students/journal.html:62 templates/students/students_list.html:59
+#: templates/students/students_list.html:61
+#: templates/students/students_list.html:75
+msgid "Edit"
+msgstr ""
+
+#: templates/students/groups.html:14 templates/students/groups_add.html:9
+#: templates/students/groups_add.html:11
+msgid "Add Group"
+msgstr ""
+
+#: templates/students/groups.html:37 templates/students/students_list.html:47
+msgid "Actions"
+msgstr ""
+
+#: templates/students/groups.html:55 templates/students/students_list.html:67
+msgid "Action"
+msgstr ""
+
+#: templates/students/groups.html:63 templates/students/students_list.html:78
+msgid "Delete"
+msgstr ""
+
+#: templates/students/groups_add.html:16
+#: templates/students/groups_edit.html:16
+#: templates/students/students_edit.html:16
+msgid "Please, correct the errors"
+msgstr ""
+
+#: templates/students/groups_confirm_delete.html:7
+#: templates/students/groups_confirm_delete.html:9
+msgid "Delete Group"
+msgstr ""
+
+#: templates/students/groups_confirm_delete.html:15
+#, python-format
+msgid "Do you really want to delete group: \"%(object)s\"?"
+msgstr ""
+
+#: templates/students/groups_confirm_delete.html:16
+#: templates/students/students_confirm_delete.html:16
+msgid "Yes"
+msgstr ""
+
+#: templates/students/groups_confirm_delete.html:17
+msgid "No"
+msgstr ""
+
+#: templates/students/groups_edit.html:9
+#: templates/students/groups_edit.html:11
+msgid "Edit Group"
+msgstr ""
+
+#: templates/students/journal.html:7 templates/students/journal.html:9
+msgid "Visiting Page"
+msgstr ""
+
+#: templates/students/journal.html:16
+msgid "No students in the database. Please, "
+msgstr ""
+
+#: templates/students/journal.html:16
+msgid "add"
+msgstr ""
+
+#: templates/students/journal.html:17
+msgid "one"
+msgstr ""
+
+#: templates/students/journal.html:23
+msgid "Changes are saving automatically by clicking on checkbox"
+msgstr ""
+
+#: templates/students/journal.html:24
+msgid "Saving..."
+msgstr ""
+
+#: templates/students/journal.html:28
+msgid "Previous month"
+msgstr ""
+
+#: templates/students/journal.html:30
+msgid "Next month"
+msgstr ""
+
+#: templates/students/students_add.html:9
+#: templates/students/students_add.html:11
+#: templates/students/students_list.html:14
+msgid "Add Student"
+msgstr ""
+
+#: templates/students/students_add.html:16
+msgid "Please, correct errors"
+msgstr ""
+
+#: templates/students/students_confirm_delete.html:7
+#: templates/students/students_confirm_delete.html:9
+msgid "Delete Student"
+msgstr ""
+
+#: templates/students/students_confirm_delete.html:15
+#, python-format
+msgid "Do you really want to delete student \"%(object)s\"?"
+msgstr ""
+
+#: templates/students/students_edit.html:9
+#: templates/students/students_edit.html:11
+msgid "Edit Student"
+msgstr ""
+
+#: templates/students/students_list.html:9
+msgid "Students List"
+msgstr ""
+
+#: templates/students/students_list.html:41
+msgid "Ticket #"
+msgstr ""
+
+#: views/contact_admin.py:32
+msgid "Send"
+msgstr ""
+
+#: views/contact_admin.py:35
+msgid "Your E-mail"
+msgstr ""
+
+#: views/contact_admin.py:38
+msgid "Subject"
+msgstr ""
+
+#: views/contact_admin.py:42
+msgid "Message"
+msgstr ""
+
+#: views/contact_admin.py:60
+msgid "An error occurred"
+msgstr ""
+
+#: views/contact_admin.py:64
+msgid "Message send successfully"
+msgstr ""
+
+#: views/groups.py:40
+msgid "Group update successful!"
+msgstr ""
+
+#: views/groups.py:54
+msgid "New group was added"
+msgstr ""
+
+#: views/students.py:20
+msgid "Student updated successfully!"
+msgstr ""
+
+#: views/students.py:34
+msgid "Student added successfully!"
+msgstr ""
