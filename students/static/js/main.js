@@ -41,6 +41,15 @@ function initGroupSelector() {
     });
 }
 
+function initLanguageSelector() {
+    $('#lang-selector select').change(function (event) {
+        var lang = $(this).val();
+        $.cookie('django_language', lang, {'path': '/', 'expires': 365});
+        location.reload(true);
+        return true;
+    });
+}
+
 function initDateFields() {
     $('input.dateinput').datepicker({
         'format':'yyyy-mm-dd'
@@ -72,14 +81,14 @@ function initEditStudentPage() {
                     'keyboard': false,
                     'backdrop': false,
                     'show': true
-                });                
+                });
             },
             'error': function(){
                 alert(gettext('There was some error on the server. Please, try again later'));
                 return false;
             }
         });
-        return false;        
+        return false;
     });
 }
 
@@ -112,6 +121,7 @@ function initEditStudentForm(form, modal) {
 $(document).ready(function(){
     initJournal();
     initGroupSelector();
+    initLanguageSelector();
     initDateFields();
     initEditStudentPage();
 });
