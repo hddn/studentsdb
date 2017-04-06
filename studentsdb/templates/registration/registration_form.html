@@ -6,13 +6,6 @@
 
 {% block title %}{% trans "Register Form"%}{% endblock title %}
 
-{% block status_message %}
-{% if form.errors %}
-<div class="alert alert-warning" role="alert">{% trans "Please, correct the errors"%} {{ form.non_field_errors }}  
-</div>
-{% endif %}
-{% endblock %}
-
 {% block content %}
 </div>
 <form action="{% url "users:registration_register" %}" method="post">
