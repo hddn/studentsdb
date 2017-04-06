@@ -48,6 +48,7 @@
 
         <div class="col-xs-1" id="lang-selector">
             <select name="">
+                {% get_current_language as LANGUAGE_CODE %}
                 <option value="en" {% if "en" == LANGUAGE_CODE %}selected="selected"{% endif %}>EN</option>
                 <option value="uk" {% if "uk" == LANGUAGE_CODE %}selected="selected"{% endif %}>UK</option>
             </select>
@@ -100,7 +101,7 @@
         
       <div class="row" id="footer">
         <div class="col-xs-12">
-          &copy; 2015 {% trans "Students Accounting Service" %}
+          &copy; 2017 {% trans "Students Accounting Service" %}
         </div>        
       </div>
 
