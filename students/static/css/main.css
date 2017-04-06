@@ -17,17 +17,22 @@ h1, h2, h3, h4, h5, h6 {
 
 #group-selector select {
     margin: 0;
-    width: 80%;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
+    width: 75%;
     height: 30px;
     line-height: 30px;
     color: #555555; 
-
 }
 
 #lang-selector {
     margin-top: 30px;
+}
+
+#lang-selector select {
+    margin: 0;
+    width: 75%;
+    height: 30px;
+    line-height: 30px;
+    color: #555555;
 }
 
 #add-student, #add-group {
@@ -54,6 +59,6 @@ td.day-box, th.day-header {
 }
 
 #user-toolbar {
-    margin-top: 30px;
+    margin-top: 35px;
     text-align: right;
 }
