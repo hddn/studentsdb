@@ -16,6 +16,7 @@ function initJournal() {
                 indicator.show();
             },
             'error': function(xhr, status, error){
+
                 alert(error);
                 indicator.hide();
             },
@@ -118,10 +119,65 @@ function initEditStudentForm(form, modal) {
     });
 }
 
+function initLoginRegisterPage() {
+    $('a.register-page, a.login-page').click(function(event){
+        var link = $(this);
+        $.ajax({
+            'url': link.attr('href'),
+            'dataType': 'html',
+            'type': 'get',
+            'success': function(data, status, xhr){
+                if(status != 'success') {
+                    alert(gettext('There was some error on the server. Please, try again later'));
+                    return false;
+                }
+                var modal = $('#myModal'), html = $(data),
+                form = html.find('.form-horizontal');
+                modal.find('.modal-title').html(html.find('h2').text());
+                modal.find('.modal-body').html(form);
+                initLoginRegisterForm(form, modal, link);
+                modal.modal('show');
+
+            },
+            'error': function(){
+                alert(gettext('There was some error on the server. Please, try again later'));
+                return false;
+            }
+        });
+        return false;
+    });
+}
+
+function initLoginRegisterForm(form, modal, link) {
+    form.ajaxForm({
+        'url': link.attr('href'),
+        'dataType': 'html',
+        'error': function(){
+            alert(gettext('There was some error on the server. Please, try again later'));
+            return false;
+        },
+        'success': function(data, status, xhr){
+            var html = $(data),
+            newform = html.find('.form-horizontal');
+            modal.find('.modal-body').html(html.find('.alert'));
+            if (newform.length > 0) {
+                if (!newform.attr('action')) {
+                newform.attr('action', link.attr('href'))
+            }
+                modal.find('.modal-body').append(newform);
+                initLoginRegisterForm(newform, modal, link);
+            } else {
+                location.reload(true)
+            }
+        }
+    });
+}
+
 $(document).ready(function(){
     initJournal();
     initGroupSelector();
     initLanguageSelector();
     initDateFields();
     initEditStudentPage();
+    initLoginRegisterPage();
 });
