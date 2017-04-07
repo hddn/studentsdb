@@ -2,6 +2,7 @@
 import logging
 
 from django import forms
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -57,10 +58,13 @@ class ContactView(FormView):
             send_mail(subject, message, from_email, [ADMIN_EMAIL])
 
         except Exception:
-            message = _('An error occurred')
-            logger = logging.getLogger(__name__)
-            logger.exception(message)
+            result_message = _('An error occurred')
+            messages.warning(self.request, result_message)
         else:
-            message = _('Message send successfully')
+            result_message = _('Message send successfully')
+            messages.success(self.request, result_message)
 
-        return HttpResponseRedirect('{}?status_message={}'.format(reverse('contact_admin'), message))
+        logger = logging.getLogger(__name__)
+        logger.info(result_message)
+
+        return HttpResponseRedirect(reverse('contact_admin'))
