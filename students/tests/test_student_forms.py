@@ -61,7 +61,7 @@ class TestStudentUpdateForm(TestCase):
         student = Student.objects.get(pk=1)
         self.assertEqual(student.first_name, 'Test Name')
         self.assertEqual(student.last_name, 'Test Last Name')
-        self.assertEqual(student.ticket, '123')
+        self.assertEqual(student.ticket, 123)
         self.assertEqual(student.student_group, group)
 
         # check for proper redirect
