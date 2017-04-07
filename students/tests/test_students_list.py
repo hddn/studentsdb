@@ -34,9 +34,6 @@ class TestStudentsList(TestCase):
         # check if student is in the list
         self.assertIn(b'Jordan', response.content)
 
-        # check if student edit link is in the response
-        self.assertIn(reverse('students_edit', kwargs={'pk': Student.objects.all()[0].id}).encode(), response.content)
-
         # check for pagination
         self.assertEqual(len(response.context['students']), 3)
         response = self.client.get(self.url, {'page': '2'})

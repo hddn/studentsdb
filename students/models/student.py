@@ -33,9 +33,9 @@ class Student(models.Model):
         verbose_name=_('Photo'),
         null=True)
 
-    ticket = models.CharField(
-        max_length=256,
+    ticket = models.IntegerField(
         blank=False,
+        null=True,
         verbose_name=_('Ticket'))
 
     notes = models.TextField(

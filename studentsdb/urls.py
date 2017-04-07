@@ -21,7 +21,9 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.views.generic import RedirectView, TemplateView
 from django.views.i18n import JavaScriptCatalog
+from registration.backends.simple.views import RegistrationView
 
+from students.forms.register import RegisterForm
 from students.views.students import StudentUpdateView, StudentDeleteView, StudentAddView, StudentsListView
 from students.views.groups import GroupUpdateView, GroupDeleteView, GroupAddView, GroupsListView
 from students.views.exams import ExamsListView
@@ -55,6 +57,7 @@ urlpatterns = [
         template_name='registration/profile.html')), name='profile'),
     url(r'^users/login/$', auth_views.login, kwargs={'authentication_form': LoginForm}, name='auth_login'),
     url(r'^users/logout/$', auth_views.logout, kwargs={'next_page': 'home'}, name='auth_logout'),
+    url(r'^users/register/$', RegistrationView.as_view(form_class=RegisterForm), name='auth_register'),
     url(r'^register/complete/$', RedirectView.as_view(pattern_name='home'), name='registration_complete'),
     url(r'^users/', include('registration.backends.simple.urls', namespace='users')),
 

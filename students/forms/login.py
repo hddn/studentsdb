@@ -1,5 +1,4 @@
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 
 from crispy_forms.helper import FormHelper
@@ -24,10 +23,8 @@ class LoginForm(AuthenticationForm):
         self.helper.field_class = 'col-xs-10'
 
         self.helper.layout = Layout(
-            self.helper.layout, FormActions(
+            'username',
+            'password',
+            FormActions(
                 Submit('login_button', _('Login'), css_class="btn btn-primary"),
             ))
-
-    class Meta:
-        model = User
-        fields = ['username', 'password']
