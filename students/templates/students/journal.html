@@ -13,7 +13,7 @@
   {% if not students %}
 
   <div class="alert alert-warning">
-    {% trans "No students in the database. Please, "%}<a href="{% url "students_add" %}">{% trans "add" %}</a>
+    {% trans "No students in the database. Please, "%}<a href="{% url "students_add" %}" class="add-form-link">{% trans "add" %}</a>
     {% trans "one" %}
   </div>
 
