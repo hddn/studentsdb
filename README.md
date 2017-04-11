@@ -36,7 +36,7 @@ $ source stdb/bin/activate
 (stdb)$ python manage.py runserver
 ```
 
-### Run tests
+## Run tests
 
 ```sh
 (stdb)$ python manage.py test students studentsdb
