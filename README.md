@@ -1,4 +1,4 @@
-# Students database management application
+# Students database web application
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
