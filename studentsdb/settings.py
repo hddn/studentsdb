@@ -34,6 +34,8 @@ INSTALLED_APPS = (
     'social_django',
     'students',
     'studentsdb',
+    'rest_framework',
+    'apiv1.apps.Apiv1Config',
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

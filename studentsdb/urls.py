@@ -61,5 +61,6 @@ urlpatterns = [
     url(r'^register/complete/$', RedirectView.as_view(pattern_name='home'), name='registration_complete'),
     url(r'^users/', include('registration.backends.simple.urls', namespace='users')),
 
-    url('^social/', include('social_django.urls', namespace='social')),
+    url(r'^social/', include('social_django.urls', namespace='social')),
+    url(r'^api/v1/', include('apiv1.urls')),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
