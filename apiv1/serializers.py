@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from students.models import Student, Group, Exam
+from students.models import Student, Group, Exam, MonthJournal
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -20,3 +20,9 @@ class ExamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exam
         fields = ('id', 'subject', 'teacher', 'date', 'group', 'notes')
+
+
+class JournalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MonthJournal
+        fields = '__all__'
