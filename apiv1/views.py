@@ -1,7 +1,8 @@
+from django.contrib.auth.models import User
 from rest_framework import permissions
 from rest_framework import viewsets
 
-from apiv1.serializers import StudentSerializer, GroupSerializer, ExamSerializer, JournalSerializer
+from apiv1.serializers import StudentSerializer, GroupSerializer, ExamSerializer, JournalSerializer, UserSerializer
 from students.models import Student, Group, Exam, MonthJournal
 
 
@@ -27,3 +28,9 @@ class JournalViewSet(viewsets.ModelViewSet):
     queryset = MonthJournal.objects.all()
     serializer_class = JournalSerializer
     permission_classes = (permissions.IsAuthenticated,)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (permissions.IsAdminUser,)
