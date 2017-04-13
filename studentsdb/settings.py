@@ -90,7 +90,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = ''
 
 SOCIAL_AUTH_FACEBOOK_SECRET = ''
 
-LOGIN_REDIRECT_URL = PORTAL_URL
+LOGIN_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -113,6 +113,10 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 5
+}
 
 LOG_FILE = os.path.join(BASE_DIR, 'studentsdb.log')
 
