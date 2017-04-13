@@ -1,5 +1,4 @@
-from .settings import PORTAL_URL
 
 
 def student_proc(request):
-    return {'PORTAL_URL': PORTAL_URL}
+    return {'PORTAL_URL': request.get_host()}

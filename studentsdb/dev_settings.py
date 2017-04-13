@@ -6,8 +6,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-PORTAL_URL = 'http://192.168.11.56:8000'
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -30,4 +28,3 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ADMIN_EMAIL = 'admin@gmail.com'
 
 MEDIA_URL = '/media/'
-

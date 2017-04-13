@@ -21,4 +21,3 @@ class MonthJournal(models.Model):
 
 for i in range(1, 32):
     MonthJournal.add_to_class('present_day{}'.format(i), models.BooleanField(default=False))
-
