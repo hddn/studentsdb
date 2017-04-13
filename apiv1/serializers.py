@@ -49,3 +49,32 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class RegisterUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'password', 'password2')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    password2 = serializers.CharField(label='Confirm password', max_length=16, required=True, write_only=True)
+
+    def validate_email(self, email):
+        existing = User.objects.filter(email=email)
+        if email and existing:
+            raise serializers.ValidationError('This email is already registered')
+        return email
+
+    def validate(self, attrs):
+        if attrs.get('password') != attrs.get('password2'):
+            raise serializers.ValidationError("The two password fields didn't match.")
+        return attrs
+
+    def create(self, validated_data):
+        username = validated_data.get('username')
+        email = validated_data.get('email')
+        first_name = validated_data.get('first_name')
+        last_name = validated_data.get('last_name')
+        password = validated_data.get('password')
+        return self.Meta.model.objects.create_user(username=username, email=email, first_name=first_name,
+                                                   last_name=last_name, password=password)
