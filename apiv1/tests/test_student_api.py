@@ -31,7 +31,6 @@ class StudentAPITestCase(APITestCase):
         """Check if anonymous user can get a student detail"""
 
         url = reverse('student-detail', args=[self.student.pk])
-        self.client.login(username='admin', password='test12345')
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
