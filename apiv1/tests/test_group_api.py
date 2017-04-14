@@ -6,8 +6,8 @@ from rest_framework.test import APITestCase
 from students.models import Group
 
 
-class StudentAPITestCase(APITestCase):
-    """Test for student api"""
+class GroupAPITestCase(APITestCase):
+    """Test for group api"""
 
     def setUp(self):
         User.objects.create_user(username='admin', password='test12345', email='admin@admin.com')
@@ -27,8 +27,8 @@ class StudentAPITestCase(APITestCase):
         """Check if logged in user can get a groups list"""
 
         url = reverse('group-list')
-        response = self.client.get(url)
         self.client.login(username='admin', password='test12345')
+        response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.json()['results']), 1)
@@ -39,8 +39,7 @@ class StudentAPITestCase(APITestCase):
         url = reverse('group-detail', args=[self.group.pk])
         response = self.client.get(url)
 
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json()['title'], 'Test')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_post_group_if_authenticated(self):
         """Check if logged in user can add groups"""
@@ -52,7 +51,7 @@ class StudentAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Group.objects.count(), 2)
 
-    def test_post_student_if_anonymous(self):
+    def test_post_group_if_anonymous(self):
         """Check if POST group returns 403 status if user is anonymous"""
 
         url = reverse('group-list')
