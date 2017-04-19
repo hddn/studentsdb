@@ -16,7 +16,7 @@ class GroupAPITestCase(APITestCase):
         self.data = {'title': 'Some Group'}
 
     def test_groups_list_if_anonymous(self):
-        """Check if anonymous user can get a groups list"""
+        """Check if GET groups returns 403 status if user is anonymous"""
 
         url = reverse('group-list')
         response = self.client.get(url)
@@ -34,7 +34,7 @@ class GroupAPITestCase(APITestCase):
         self.assertEqual(len(response.json()['results']), 1)
 
     def test_get_group_if_anonymous(self):
-        """Check if anonymous user can get a group detail"""
+        """Check if GET group detail returns 403 status if user is anonymous"""
 
         url = reverse('group-detail', args=[self.group.pk])
         response = self.client.get(url)
