@@ -8,8 +8,8 @@ It allows you to track attendance of your students. Manage exams, add or edit st
 
 ## Technical Stack
 
-- Python 3.5.2, Django 1.10.5, PostgreSQL 
-- Twitter Bootstrap 3.3.5, jQuery 2.1.1
+- Python 3.5.2, Django 1.10.5, Django REST Framework 3.6.2 
+- PostgreSQL, Twitter Bootstrap 3.3.5, jQuery 2.1.1
 
 ## Installation
 
@@ -39,6 +39,6 @@ $ source stdb/bin/activate
 ## Run tests
 
 ```sh
-(stdb)$ python manage.py test students studentsdb
+(stdb)$ python manage.py test
 ```
 
